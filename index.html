@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Dashboard UI</title>
-
+    
 <style>
 
 body{
@@ -222,6 +222,42 @@ body{
     </div>
 
 </div>
+
+    <div class="sidebar-button" onclick="openAccount()">Account</div>
+
+    <script>
+function openAccount(){
+    window.location.href = "account.html";
+}
+</script>
+
+    <div class="sidebar-button" onclick="toggleNotifications()">Notifications</div>
+
+    <script>
+function toggleNotifications(){
+    let panel = document.getElementById("notificationsPanel");
+
+    if(panel.style.display === "none"){
+        panel.style.display = "block";
+    }else{
+        panel.style.display = "none";
+    }
+}
+</script>
+
+    <div class="panel" id="notificationsPanel">
+
+<div class="app" onclick="openApp('notes')">N</div>
+
+        <script>
+function openApp(app){
+
+    if(app === "notes"){
+        alert("Opening Notes App");
+    }
+
+}
+</script>
 
 </body>
 </html>
