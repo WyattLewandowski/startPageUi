@@ -1,99 +1,227 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <style>
-            #container {
-                background-color: blue;
-      position: relative;
-      width: 800px;
-      height: 600px;
-      border: 1px solid #ccc;
-    }
+<meta charset="UTF-8">
+<title>Dashboard UI</title>
 
-        .button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none; /* Remove default link underline */
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer; /* Makes the cursor a hand icon */
-  border-radius: 8px;
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#0f0f4a;
 }
-    </style>
-    <title>Page Title</title>
-    <link rel="stylesheet" href="styles.css">
+
+/* Layout */
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:130px;
+    background:#4c4f78;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:10px;
+    gap:15px;
+}
+
+.sidebar-button{
+    width:100%;
+    text-align:center;
+    background:#64679a;
+    padding:18px 5px;
+    border-radius:12px;
+    color:white;
+    font-size:14px;
+}
+
+.icon{
+    width:70px;
+    height:70px;
+    border-radius:14px;
+    background:#64679a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+}
+
+/* Main */
+
+.main{
+    flex:1;
+    padding:20px;
+}
+
+/* Search */
+
+.search{
+    width:70%;
+    margin:auto;
+    background:#64679a;
+    padding:12px;
+    border-radius:20px;
+    text-align:center;
+    color:white;
+}
+
+/* Panels */
+
+.panel{
+    margin-top:30px;
+    background:#64679a;
+    border-radius:18px;
+    padding:15px;
+}
+
+.panel-title{
+    text-align:center;
+    margin-bottom:10px;
+    color:white;
+}
+
+/* Recent apps */
+
+.apps{
+    display:flex;
+    gap:15px;
+}
+
+.app{
+    width:120px;
+    height:120px;
+    border-radius:15px;
+    background:#9aa0c2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    position:relative;
+}
+
+/* Tooltip */
+
+.app:hover .tooltip{
+    visibility:visible;
+    opacity:1;
+}
+
+.tooltip{
+    position:absolute;
+    top:-65px;
+    left:-10px;
+    width:180px;
+    background:#8b8fc2;
+    padding:10px;
+    border-radius:10px;
+    font-size:12px;
+    color:white;
+    visibility:hidden;
+    opacity:0;
+    transition:0.2s;
+}
+
+/* Notifications */
+
+.notifications{
+    display:flex;
+    gap:20px;
+}
+
+.note{
+    width:180px;
+    height:120px;
+    background:#9aa0c2;
+    border-radius:15px;
+    padding:15px;
+    color:white;
+    font-size:14px;
+}
+
+</style>
 </head>
+
 <body>
-    <a href="google.com" class="button">Go to Another Page</a>
-      <div id="container"></div>
-    <h1>Easter egg lol</h1>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <div class="sidebar-button">Account</div>
+
+        <div class="sidebar-button">Pinned Apps</div>
+
+        <div class="icon">⚙</div>
+        <div class="icon">🌀</div>
+        <div class="icon">🔥</div>
+
+        <div class="sidebar-button">All Apps</div>
+
+    </div>
+
+
+    <!-- Main content -->
+    <div class="main">
+
+        <div class="search">Search</div>
+
+
+        <!-- Recent Apps -->
+        <div class="panel">
+
+            <div class="panel-title">Recent Apps</div>
+
+            <div class="apps">
+
+                <div class="app">
+                    ⚙
+                    <div class="tooltip">
+                        App Description will appear in a tool tip box like this when the mouse is over recent apps
+                    </div>
+                </div>
+
+                <div class="app">N</div>
+                <div class="app">✳</div>
+                <div class="app">☁</div>
+                <div class="app">C</div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Notifications -->
+        <div class="panel">
+
+            <div class="panel-title">Notifications</div>
+
+            <div class="notifications">
+
+                <div class="note">
+                    03-01-2026<br>
+                    Meeting scheduled<br>
+                    at 11:00 AM
+                </div>
+
+                <div class="note">
+                    02-27-2026<br>
+                    System Update
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
