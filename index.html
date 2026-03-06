@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Dashboard</title>
+<title>Dashboard UI</title>
 
 <style>
 
@@ -13,7 +14,7 @@ font-family:"Segoe UI",sans-serif;
 
 body{
 margin:0;
-background:#10104a;
+background:#0f0f4a;
 color:white;
 height:100vh;
 overflow:hidden;
@@ -23,7 +24,7 @@ overflow:hidden;
 
 .wrapper{
 display:grid;
-grid-template-columns:140px 1fr;
+grid-template-columns:150px 1fr;
 height:100vh;
 gap:18px;
 padding:18px;
@@ -32,7 +33,7 @@ padding:18px;
 /* SIDEBAR */
 
 .sidebar{
-background:#575a88;
+background:#565a88;
 border-radius:18px;
 display:flex;
 flex-direction:column;
@@ -41,9 +42,11 @@ padding:14px;
 gap:16px;
 }
 
+/* SIDEBAR BUTTONS */
+
 .sidebar-btn{
 width:100%;
-background:#6f73a6;
+background:#6d71a6;
 border-radius:14px;
 padding:14px;
 text-align:center;
@@ -54,9 +57,9 @@ position:relative;
 /* ICON BUTTONS */
 
 .icon-btn{
-width:70px;
+width:80px;
 aspect-ratio:1/1;
-background:#6f73a6;
+background:#6d71a6;
 border-radius:16px;
 display:flex;
 align-items:center;
@@ -66,7 +69,13 @@ cursor:pointer;
 position:relative;
 }
 
-/* MAIN AREA */
+/* PUSHES ALL APPS TO BOTTOM */
+
+.all-apps{
+margin-top:auto;
+}
+
+/* MAIN CONTENT */
 
 .main{
 display:grid;
@@ -77,11 +86,11 @@ gap:20px;
 /* SEARCH BAR */
 
 .search{
-width:60%;
-max-width:700px;
+width:55%;
+max-width:600px;
 margin:auto;
-background:#6a6ea0;
-border-radius:22px;
+background:#666aa0;
+border-radius:24px;
 padding:12px;
 text-align:center;
 }
@@ -89,7 +98,7 @@ text-align:center;
 /* PANELS */
 
 .panel{
-background:#6a6ea0;
+background:#666aa0;
 border-radius:20px;
 padding:12px;
 display:flex;
@@ -102,7 +111,7 @@ margin-bottom:10px;
 font-size:14px;
 }
 
-/* RECENT APPS */
+/* RECENT APPS GRID */
 
 .apps{
 flex:1;
@@ -111,6 +120,8 @@ grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
 gap:14px;
 padding:10px;
 }
+
+/* APP BOX */
 
 .app{
 background:#9397bf;
@@ -124,15 +135,17 @@ cursor:pointer;
 position:relative;
 }
 
-/* NOTIFICATIONS */
+/* NOTIFICATIONS GRID */
 
 .notifications{
 flex:1;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:16px;
 padding:10px;
 }
+
+/* NOTIFICATION CARD */
 
 .note{
 background:#9397bf;
@@ -148,7 +161,7 @@ justify-content:center;
 
 .tooltip{
 position:absolute;
-bottom:110%;
+bottom:115%;
 left:50%;
 transform:translateX(-50%);
 background:#8c90bd;
@@ -167,7 +180,26 @@ transition:0.2s;
 opacity:1;
 }
 
+/* SMALL SCREEN ADJUSTMENT */
+
+@media (max-width:900px){
+
+.wrapper{
+grid-template-columns:110px 1fr;
+}
+
+.icon-btn{
+width:60px;
+}
+
+.search{
+width:80%;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
@@ -185,7 +217,7 @@ Account
 
 <div class="sidebar-btn">
 Pinned Apps
-
+<div class="tooltip">View pinned applications</div>
 </div>
 
 <div class="icon-btn">
@@ -203,20 +235,24 @@ Pinned Apps
 <div class="tooltip">System Tools</div>
 </div>
 
-<div class="sidebar-btn">
+<div class="sidebar-btn all-apps">
 All Apps
-<div class="tooltip">View all applications</div>
+<div class="tooltip">Open application library</div>
 </div>
 
 </div>
 
-
-<!-- MAIN -->
+<!-- MAIN CONTENT -->
 
 <div class="main">
 
-<div class="search">Search</div>
+<!-- SEARCH -->
 
+<div class="search">
+Search
+</div>
+
+<!-- RECENT APPS -->
 
 <div class="panel">
 
@@ -226,7 +262,7 @@ All Apps
 
 <div class="app">
 ⚙
-<div class="tooltip">Tool App</div>
+<div class="tooltip">Tools Application</div>
 </div>
 
 <div class="app">
@@ -236,7 +272,7 @@ N
 
 <div class="app">
 ✦
-<div class="tooltip">Graphics</div>
+<div class="tooltip">Graphics Studio</div>
 </div>
 
 <div class="app">
@@ -246,13 +282,14 @@ N
 
 <div class="app">
 C
-<div class="tooltip">Consul</div>
+<div class="tooltip">Console</div>
 </div>
 
 </div>
 
 </div>
 
+<!-- NOTIFICATIONS -->
 
 <div class="panel">
 
@@ -263,12 +300,17 @@ C
 <div class="note">
 03-01-2026<br>
 Meeting scheduled<br>
-at 11:00 AM
+11:00 AM
 </div>
 
 <div class="note">
 02-27-2026<br>
-System Update
+System Update Available
+</div>
+
+<div class="note">
+02-20-2026<br>
+Backup Completed
 </div>
 
 </div>
