@@ -2,146 +2,153 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Dashboard UI</title>
-    
+<title>Dashboard Mockup</title>
+
 <style>
 
+*{
+box-sizing:border-box;
+font-family: "Segoe UI", sans-serif;
+}
+
 body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#0f0f4a;
+margin:0;
+background:#0e0e4f;
+color:white;
 }
 
 /* Layout */
 
-.container{
-    display:flex;
-    height:100vh;
+.wrapper{
+display:flex;
+height:100vh;
 }
 
 /* Sidebar */
 
 .sidebar{
-    width:130px;
-    background:#4c4f78;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding:10px;
-    gap:15px;
+width:140px;
+background:#535789;
+padding:15px 12px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:18px;
 }
 
-.sidebar-button{
-    width:100%;
-    text-align:center;
-    background:#64679a;
-    padding:18px 5px;
-    border-radius:12px;
-    color:white;
-    font-size:14px;
+.sidebar-box{
+width:100%;
+background:#6c70a3;
+border-radius:16px;
+text-align:center;
+padding:16px 6px;
+font-size:14px;
 }
 
-.icon{
-    width:70px;
-    height:70px;
-    border-radius:14px;
-    background:#64679a;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:28px;
+.sidebar-icon{
+width:80px;
+height:80px;
+background:#6c70a3;
+border-radius:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
 }
 
 /* Main */
 
 .main{
-    flex:1;
-    padding:20px;
+flex:1;
+padding:25px 35px;
 }
 
 /* Search */
 
 .search{
-    width:70%;
-    margin:auto;
-    background:#64679a;
-    padding:12px;
-    border-radius:20px;
-    text-align:center;
-    color:white;
+width:70%;
+margin:auto;
+background:#64689c;
+border-radius:20px;
+padding:12px;
+text-align:center;
+font-size:16px;
 }
 
 /* Panels */
 
 .panel{
-    margin-top:30px;
-    background:#64679a;
-    border-radius:18px;
-    padding:15px;
+margin-top:30px;
+background:#64689c;
+border-radius:22px;
+padding:15px 20px 20px 20px;
 }
 
 .panel-title{
-    text-align:center;
-    margin-bottom:10px;
-    color:white;
+text-align:center;
+margin-bottom:10px;
+font-size:15px;
 }
 
 /* Recent apps */
 
 .apps{
-    display:flex;
-    gap:15px;
+display:flex;
+gap:15px;
+padding:10px;
 }
 
 .app{
-    width:120px;
-    height:120px;
-    border-radius:15px;
-    background:#9aa0c2;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:40px;
-    position:relative;
+width:130px;
+height:120px;
+background:#9095bc;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:40px;
+position:relative;
 }
 
 /* Tooltip */
 
-.app:hover .tooltip{
-    visibility:visible;
-    opacity:1;
+.tooltip{
+position:absolute;
+top:-75px;
+left:-15px;
+width:200px;
+background:#8e92bf;
+padding:10px;
+border-radius:12px;
+font-size:12px;
+opacity:0;
+pointer-events:none;
+transition:0.2s;
 }
 
-.tooltip{
-    position:absolute;
-    top:-65px;
-    left:-10px;
-    width:180px;
-    background:#8b8fc2;
-    padding:10px;
-    border-radius:10px;
-    font-size:12px;
-    color:white;
-    visibility:hidden;
-    opacity:0;
-    transition:0.2s;
+.app:hover .tooltip{
+opacity:1;
 }
 
 /* Notifications */
 
 .notifications{
-    display:flex;
-    gap:20px;
+display:flex;
+gap:20px;
+padding:10px;
 }
 
 .note{
-    width:180px;
-    height:120px;
-    background:#9aa0c2;
-    border-radius:15px;
-    padding:15px;
-    color:white;
-    font-size:14px;
+width:200px;
+height:120px;
+background:#9095bc;
+border-radius:18px;
+padding:15px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+text-align:center;
+font-size:14px;
 }
 
 </style>
@@ -149,115 +156,83 @@ body{
 
 <body>
 
-<div class="container">
+<div class="wrapper">
 
-    <!-- Sidebar -->
-    <div class="sidebar">
+<!-- Sidebar -->
 
-        <div class="sidebar-button">Account</div>
+<div class="sidebar">
 
-        <div class="sidebar-button">Pinned Apps</div>
+<div class="sidebar-box">Account</div>
 
-        <div class="icon">⚙</div>
-        <div class="icon">🌀</div>
-        <div class="icon">🔥</div>
+<div class="sidebar-box">Pinned Apps</div>
 
-        <div class="sidebar-button">All Apps</div>
+<div class="sidebar-icon">⚙</div>
+<div class="sidebar-icon">🌀</div>
+<div class="sidebar-icon">🔥</div>
 
-    </div>
-
-
-    <!-- Main content -->
-    <div class="main">
-
-        <div class="search">Search</div>
-
-
-        <!-- Recent Apps -->
-        <div class="panel">
-
-            <div class="panel-title">Recent Apps</div>
-
-            <div class="apps">
-
-                <div class="app">
-                    ⚙
-                    <div class="tooltip">
-                        App Description will appear in a tool tip box like this when the mouse is over recent apps
-                    </div>
-                </div>
-
-                <div class="app">N</div>
-                <div class="app">✳</div>
-                <div class="app">☁</div>
-                <div class="app">C</div>
-
-            </div>
-
-        </div>
-
-
-        <!-- Notifications -->
-        <div class="panel">
-
-            <div class="panel-title">Notifications</div>
-
-            <div class="notifications">
-
-                <div class="note">
-                    03-01-2026<br>
-                    Meeting scheduled<br>
-                    at 11:00 AM
-                </div>
-
-                <div class="note">
-                    02-27-2026<br>
-                    System Update
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+<div class="sidebar-box">All Apps</div>
 
 </div>
 
-    <div class="sidebar-button" onclick="openAccount()">Account</div>
 
-    <script>
-function openAccount(){
-    window.location.href = "account.html";
-}
-</script>
+<!-- Main -->
 
-    <div class="sidebar-button" onclick="toggleNotifications()">Notifications</div>
+<div class="main">
 
-    <script>
-function toggleNotifications(){
-    let panel = document.getElementById("notificationsPanel");
+<div class="search">Search</div>
 
-    if(panel.style.display === "none"){
-        panel.style.display = "block";
-    }else{
-        panel.style.display = "none";
-    }
-}
-</script>
 
-    <div class="panel" id="notificationsPanel">
+<!-- Recent Apps -->
 
-<div class="app" onclick="openApp('notes')">N</div>
+<div class="panel">
 
-        <script>
-function openApp(app){
+<div class="panel-title">Recent Apps</div>
 
-    if(app === "notes"){
-        alert("Opening Notes App");
-    }
+<div class="apps">
 
-}
-</script>
+<div class="app">
+⚙
+<div class="tooltip">
+App Description will appear in a tool tip box like this when the mouse is over recent apps
+</div>
+</div>
+
+<div class="app">N</div>
+<div class="app">✦</div>
+<div class="app">☁</div>
+<div class="app">C</div>
+
+</div>
+
+</div>
+
+
+<!-- Notifications -->
+
+<div class="panel">
+
+<div class="panel-title">Notifications</div>
+
+<div class="notifications">
+
+<div class="note">
+03-01-2026<br>
+Meeting scheduled<br>
+at 11:00 AM
+</div>
+
+<div class="note">
+02-27-2026<br>
+System Update
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </body>
 </html>
