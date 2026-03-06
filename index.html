@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Responsive Dashboard</title>
+<title>Dashboard</title>
 
 <style>
 
@@ -13,166 +13,158 @@ font-family:"Segoe UI",sans-serif;
 
 body{
 margin:0;
-background:#0e0e4f;
+background:#10104a;
 color:white;
 height:100vh;
+overflow:hidden;
 }
 
-/* Layout */
+/* MAIN LAYOUT */
 
 .wrapper{
-display:flex;
+display:grid;
+grid-template-columns:140px 1fr;
 height:100vh;
-width:100vw;
+gap:18px;
+padding:18px;
 }
 
-/* Sidebar */
+/* SIDEBAR */
 
 .sidebar{
-width:10vw;
-min-width:120px;
-background:#535789;
-padding:1vh;
+background:#575a88;
+border-radius:18px;
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:1.5vh;
+padding:14px;
+gap:16px;
 }
 
-.sidebar-box{
+.sidebar-btn{
 width:100%;
-background:#6c70a3;
-border-radius:1vw;
+background:#6f73a6;
+border-radius:14px;
+padding:14px;
 text-align:center;
-padding:1.5vh;
-font-size:0.9vw;
-min-font-size:12px;
-}
-
-.sidebar-icon{
-width:70%;
-aspect-ratio:1/1;
-background:#6c70a3;
-border-radius:1vw;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:2vw;
-}
-
-/* Main */
-
-.main{
-flex:1;
-padding:2vh 3vw;
-display:flex;
-flex-direction:column;
-}
-
-/* Search */
-
-.search{
-width:60%;
-margin:auto;
-background:#64689c;
-border-radius:2vw;
-padding:1.2vh;
-text-align:center;
-font-size:1vw;
-}
-
-/* Panels */
-
-.panel{
-margin-top:3vh;
-background:#64689c;
-border-radius:1.5vw;
-padding:1.5vh 1.5vw;
-}
-
-.panel-title{
-text-align:center;
-margin-bottom:1vh;
-font-size:1vw;
-}
-
-/* Apps */
-
-.apps{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
-gap:1vw;
-padding:1vh;
-}
-
-.app{
-aspect-ratio:1/1;
-background:#9095bc;
-border-radius:1vw;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:2vw;
+cursor:pointer;
 position:relative;
 }
 
-/* Tooltip */
+/* ICON BUTTONS */
 
-.tooltip{
-position:absolute;
-top:-6vh;
-left:0;
-width:12vw;
-background:#8e92bf;
-padding:0.8vh;
-border-radius:0.7vw;
-font-size:0.7vw;
-opacity:0;
-transition:0.2s;
+.icon-btn{
+width:70px;
+aspect-ratio:1/1;
+background:#6f73a6;
+border-radius:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+cursor:pointer;
+position:relative;
 }
 
-.app:hover .tooltip{
-opacity:1;
-}
+/* MAIN AREA */
 
-/* Notifications */
-
-.notifications{
+.main{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:1vw;
-padding:1vh;
+grid-template-rows:auto 1fr 1fr;
+gap:20px;
 }
 
-.note{
-background:#9095bc;
-border-radius:1vw;
-padding:1vh;
-text-align:center;
-font-size:0.9vw;
-}
-
-/* Small screen adjustments */
-
-@media (max-width:900px){
-
-.sidebar{
-width:18vw;
-}
+/* SEARCH BAR */
 
 .search{
-width:80%;
-font-size:14px;
+width:60%;
+max-width:700px;
+margin:auto;
+background:#6a6ea0;
+border-radius:22px;
+padding:12px;
+text-align:center;
+}
+
+/* PANELS */
+
+.panel{
+background:#6a6ea0;
+border-radius:20px;
+padding:12px;
+display:flex;
+flex-direction:column;
 }
 
 .panel-title{
+text-align:center;
+margin-bottom:10px;
 font-size:14px;
 }
 
-.note{
-font-size:13px;
+/* RECENT APPS */
+
+.apps{
+flex:1;
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:14px;
+padding:10px;
 }
 
+.app{
+background:#9397bf;
+border-radius:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+aspect-ratio:1/1;
+cursor:pointer;
+position:relative;
+}
+
+/* NOTIFICATIONS */
+
+.notifications{
+flex:1;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px;
+padding:10px;
+}
+
+.note{
+background:#9397bf;
+border-radius:16px;
+padding:16px;
+text-align:center;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* TOOLTIPS */
+
+.tooltip{
+position:absolute;
+bottom:110%;
+left:50%;
+transform:translateX(-50%);
+background:#8c90bd;
+padding:8px 10px;
+border-radius:10px;
+font-size:12px;
+white-space:nowrap;
+opacity:0;
+pointer-events:none;
+transition:0.2s;
+}
+
+.sidebar-btn:hover .tooltip,
+.icon-btn:hover .tooltip,
+.app:hover .tooltip{
+opacity:1;
 }
 
 </style>
@@ -182,19 +174,44 @@ font-size:13px;
 
 <div class="wrapper">
 
+<!-- SIDEBAR -->
+
 <div class="sidebar">
 
-<div class="sidebar-box">Account</div>
-<div class="sidebar-box">Pinned Apps</div>
+<div class="sidebar-btn">
+Account
+<div class="tooltip">Account Settings</div>
+</div>
 
-<div class="sidebar-icon">⚙</div>
-<div class="sidebar-icon">🌀</div>
-<div class="sidebar-icon">🔥</div>
+<div class="sidebar-btn">
+Pinned Apps
+<div class="tooltip">Your pinned applications</div>
+</div>
 
-<div class="sidebar-box">All Apps</div>
+<div class="icon-btn">
+⚙
+<div class="tooltip">Settings</div>
+</div>
+
+<div class="icon-btn">
+🌀
+<div class="tooltip">App Manager</div>
+</div>
+
+<div class="icon-btn">
+🔥
+<div class="tooltip">System Tools</div>
+</div>
+
+<div class="sidebar-btn">
+All Apps
+<div class="tooltip">View all applications</div>
+</div>
 
 </div>
 
+
+<!-- MAIN -->
 
 <div class="main">
 
@@ -209,15 +226,28 @@ font-size:13px;
 
 <div class="app">
 ⚙
-<div class="tooltip">
-App description appears here when hovering over the app.
-</div>
+<div class="tooltip">Tool App</div>
 </div>
 
-<div class="app">N</div>
-<div class="app">✦</div>
-<div class="app">☁</div>
-<div class="app">C</div>
+<div class="app">
+N
+<div class="tooltip">Notes</div>
+</div>
+
+<div class="app">
+✦
+<div class="tooltip">Graphics</div>
+</div>
+
+<div class="app">
+☁
+<div class="tooltip">Cloud Manager</div>
+</div>
+
+<div class="app">
+C
+<div class="tooltip">Consul</div>
+</div>
 
 </div>
 
