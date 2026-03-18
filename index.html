@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JCC2 Platform Dashboard</title>
+<title>APG Platform Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -54,7 +54,6 @@
     font-weight: 700;
     color: var(--accent-blue);
     letter-spacing: 2px;
-    margin-right: 8px;
   }
   .topbar-title {
     font-family: 'Rajdhani', sans-serif;
@@ -63,11 +62,12 @@
     color: var(--text-secondary);
     letter-spacing: 1px;
   }
+  /* Centered search bar using absolute positioning */
   .topbar-search {
-    flex: 1;
-    max-width: 360px;
-    margin: 0 auto;
-    position: relative;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 360px;
   }
   .topbar-search input {
     width: 100%;
@@ -123,16 +123,13 @@
     font-size: 15px;
     color: var(--text-secondary);
     letter-spacing: 1px;
-    margin-right: 8px;
   }
 
   /* ======= MAIN LAYOUT ======= */
   .main-layout {
     flex: 1;
     display: grid;
-    grid-template-columns: 220px 1fr 260px;
-    grid-template-rows: 1fr;
-    gap: 0;
+    grid-template-columns: 240px 1fr 260px;
     overflow: hidden;
   }
 
@@ -142,24 +139,24 @@
     border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
-    padding: 20px 14px;
-    gap: 8px;
+    padding: 16px 12px;
+    gap: 4px;
     overflow-y: auto;
   }
   .sidebar-label {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 2px;
     color: var(--text-muted);
     text-transform: uppercase;
-    margin: 10px 0 4px 6px;
+    margin: 8px 0 2px 6px;
   }
   .sidebar-btn {
     display: flex; align-items: center; gap: 10px;
     padding: 9px 12px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.15s, color 0.15s;
+    transition: background 0.15s, color 0.15s, outline 0.15s;
     color: var(--text-secondary);
     font-size: 13px;
     font-weight: 500;
@@ -167,25 +164,103 @@
     background: transparent;
     width: 100%;
     text-align: left;
+    outline: 1px solid transparent;
   }
-  .sidebar-btn:hover, .sidebar-btn.active {
+  .sidebar-btn:hover {
     background: var(--bg-card-hover);
     color: var(--text-primary);
   }
-  .sidebar-btn .icon { font-size: 16px; width: 20px; text-align: center; }
+  .sidebar-btn.active {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+    outline: 1px solid rgba(30,144,255,0.35);
+  }
+  .sidebar-btn .icon { font-size: 15px; width: 18px; text-align: center; }
+
+  /* ======= PINNED APPS IN SIDEBAR ======= */
+  .sidebar-pinned-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+    min-height: 0;
+  }
+  .sidebar-pinned-section::-webkit-scrollbar { width: 3px; }
+  .sidebar-pinned-section::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .pinned-app-row {
+    position: relative;
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, outline 0.15s;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    outline: 1px solid transparent;
+  }
+  .pinned-app-row:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+    outline: 1px solid var(--border);
+  }
+  .pinned-app-row img {
+    width: 22px; height: 22px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .pinned-app-row .pin-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .pinned-app-row .remove-pin {
+    display: none;
+    width: 16px; height: 16px;
+    background: rgba(255,82,82,0.15);
+    border: 1px solid rgba(255,82,82,0.3);
+    border-radius: 3px;
+    color: #ff5252;
+    font-size: 10px;
+    align-items: center; justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .pinned-app-row:hover .remove-pin { display: flex; }
+
+  .add-pin-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 12px;
+    border: 1px dashed var(--text-muted);
+    transition: all 0.15s;
+    margin-top: 2px;
+  }
+  .add-pin-row:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    background: rgba(30,144,255,0.05);
+  }
 
   /* Account button */
   .account-btn {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 14px 10px 10px;
+    padding: 12px 10px 8px;
     display: flex; flex-direction: column;
-    align-items: center; gap: 6px;
+    align-items: center; gap: 5px;
     cursor: pointer;
     transition: all 0.2s;
     width: 100%;
-    margin-top: auto;
+    margin-top: 10px;
+    flex-shrink: 0;
   }
   .account-btn:hover {
     border-color: var(--accent-blue);
@@ -193,17 +268,17 @@
     box-shadow: 0 0 12px var(--glow);
   }
   .account-silhouette {
-    width: 42px; height: 42px;
+    width: 36px; height: 36px;
     background: var(--bg-dark);
     border: 2px solid var(--accent-blue);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     color: var(--accent-blue);
-    font-size: 22px;
+    font-size: 18px;
   }
   .account-btn span {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 1px;
     color: var(--text-secondary);
     text-transform: uppercase;
@@ -211,7 +286,7 @@
 
   /* ======= CENTER ======= */
   .center-content {
-    padding: 20px;
+    padding: 24px 28px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -220,94 +295,15 @@
 
   .section-header {
     display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 2px;
+    margin-bottom: 12px;
   }
   .section-title {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 2px;
     color: var(--text-secondary);
     text-transform: uppercase;
-  }
-
-  /* Pinned Apps */
-  .pinned-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-  }
-  .pinned-scroll-wrap {
-    overflow-x: auto;
-    padding-bottom: 6px;
-  }
-  .pinned-scroll-wrap::-webkit-scrollbar { height: 4px; }
-  .pinned-scroll-wrap::-webkit-scrollbar-track { background: transparent; }
-  .pinned-scroll-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-
-  .pinned-row {
-    display: flex;
-    gap: 10px;
-    min-width: max-content;
-  }
-
-  .app-tile {
-    position: relative;
-    width: 90px; height: 90px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 6px;
-    cursor: pointer;
-    transition: all 0.2s;
-    flex-shrink: 0;
-    user-select: none;
-  }
-  .app-tile:hover {
-    border-color: var(--accent-blue);
-    background: var(--bg-card-hover);
-    box-shadow: 0 0 14px var(--glow);
-    transform: translateY(-2px);
-  }
-  .app-tile img {
-    width: 38px; height: 38px;
-    object-fit: contain;
-  }
-  .app-tile .tile-name {
-    font-size: 10px;
-    color: var(--text-secondary);
-    text-align: center;
-    font-weight: 500;
-    max-width: 80px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .app-tile .remove-btn {
-    position: absolute;
-    top: 4px; right: 4px;
-    width: 18px; height: 18px;
-    background: rgba(30,144,255,0.2);
-    border: 1px solid var(--accent-blue);
-    border-radius: 4px;
-    color: var(--accent-blue);
-    font-size: 11px;
-    display: none;
-    align-items: center; justify-content: center;
-    cursor: pointer;
-    z-index: 2;
-  }
-  .app-tile:hover .remove-btn { display: flex; }
-  .app-tile.add-tile {
-    border-style: dashed;
-    color: var(--text-muted);
-    font-size: 28px;
-    font-weight: 300;
-  }
-  .app-tile.add-tile:hover {
-    color: var(--accent-blue);
   }
 
   /* Tooltip */
@@ -327,41 +323,41 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.4);
   }
 
-  /* Recent Apps */
-  .recent-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+  /* Recent Apps — larger tiles */
+  .recent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 14px;
   }
   .recent-tile {
     position: relative;
-    width: 76px; height: 76px;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 10px;
+    border-radius: 14px;
+    padding: 24px 16px 18px;
     display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 5px;
+    align-items: center; gap: 12px;
     cursor: pointer;
     transition: all 0.2s;
-    flex-shrink: 0;
   }
   .recent-tile:hover {
     border-color: var(--accent-teal);
     background: var(--bg-card-hover);
-    box-shadow: 0 0 12px rgba(0,212,200,0.2);
-    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(0,212,200,0.2);
+    transform: translateY(-3px);
   }
   .recent-tile img {
-    width: 32px; height: 32px;
+    width: 52px; height: 52px;
     object-fit: contain;
   }
   .recent-tile .tile-name {
-    font-size: 9px;
-    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
     text-align: center;
-    font-weight: 500;
-    max-width: 68px;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 0.5px;
+    max-width: 140px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -371,10 +367,10 @@
   .right-panel {
     background: var(--bg-panel);
     border-left: 1px solid var(--border);
-    padding: 20px 16px;
+    padding: 18px 14px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 14px;
     overflow-y: auto;
   }
 
@@ -383,32 +379,32 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 14px;
+    padding: 12px;
   }
   .health-label {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 1.5px;
     color: var(--text-muted);
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   .health-value {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
     line-height: 1;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .health-value.good { color: #00e676; }
   .health-value.warn { color: var(--accent-gold); }
   .health-value.crit { color: #ff5252; }
   .mini-bar-wrap {
-    height: 6px;
+    height: 5px;
     background: rgba(255,255,255,0.05);
     border-radius: 3px;
     overflow: hidden;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
   .mini-bar {
     height: 100%;
@@ -419,52 +415,27 @@
   .mini-bar.warn { background: linear-gradient(90deg, #ffd740, #ff9100); }
   .mini-bar.crit { background: linear-gradient(90deg, #ff5252, #d32f2f); }
   .health-sub {
-    font-size: 11px;
+    font-size: 10px;
     color: var(--text-muted);
   }
-
   .sparkline-canvas {
     width: 100%;
-    height: 50px;
+    height: 44px;
     margin-top: 6px;
   }
 
-  /* All Apps button in sidebar */
-  .all-apps-btn {
-    background: linear-gradient(135deg, var(--accent-blue), #0066cc);
-    border: none;
-    border-radius: 8px;
-    padding: 10px 12px;
-    display: flex; align-items: center; gap: 10px;
-    color: white;
-    font-size: 13px;
-    font-weight: 600;
-    font-family: 'Exo 2', sans-serif;
-    cursor: pointer;
-    transition: all 0.2s;
-    width: 100%;
-    letter-spacing: 0.5px;
-  }
-  .all-apps-btn:hover {
-    box-shadow: 0 4px 16px rgba(30,144,255,0.4);
-    transform: translateY(-1px);
-  }
-
   /* ======= ALL APPS SCREEN ======= */
-  #screen-allapps {
-    overflow: hidden;
-  }
   .allapps-layout {
     flex: 1;
     padding: 24px 32px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
   }
   .allapps-title {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     letter-spacing: 3px;
     color: var(--text-primary);
@@ -503,22 +474,14 @@
     font-family: 'Rajdhani', sans-serif;
     letter-spacing: 0.5px;
   }
-  .app-card-category {
-    font-size: 10px;
-    color: var(--text-muted);
-  }
 
   /* ======= ACCOUNT SCREEN ======= */
-  .account-layout {
-    flex: 1;
-    padding: 32px;
-    overflow-y: auto;
+  .account-layout-inner {
+    max-width: 680px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    max-width: 700px;
-    margin: 0 auto;
-    width: 100%;
+    gap: 20px;
   }
   .account-header {
     display: flex;
@@ -526,23 +489,23 @@
     gap: 20px;
   }
   .account-avatar {
-    width: 80px; height: 80px;
+    width: 72px; height: 72px;
     background: var(--bg-card);
     border: 2px solid var(--accent-blue);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 44px;
     color: var(--accent-blue);
     box-shadow: 0 0 20px var(--glow);
+    flex-shrink: 0;
   }
   .account-info h2 {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     letter-spacing: 1px;
   }
   .account-info p {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-secondary);
     margin-top: 4px;
   }
@@ -550,27 +513,27 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 20px;
+    padding: 18px;
   }
   .account-section h3 {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 2px;
     color: var(--text-muted);
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
   .account-field {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding: 9px 0;
     border-bottom: 1px solid var(--border);
   }
   .account-field:last-child { border-bottom: none; }
   .account-field label {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -601,39 +564,33 @@
     padding: 4px 10px;
     border-radius: 6px;
   }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #00e676;
+    display: inline-block;
+    margin-right: 5px;
+    box-shadow: 0 0 5px #00e676;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
   .back-btn {
     display: flex; align-items: center; gap: 8px;
     background: transparent;
     border: 1px solid var(--border);
     color: var(--text-secondary);
-    padding: 8px 14px;
+    padding: 7px 14px;
     border-radius: 8px;
     cursor: pointer;
     font-family: 'Exo 2', sans-serif;
     font-size: 13px;
     transition: all 0.2s;
-    width: fit-content;
   }
   .back-btn:hover {
     border-color: var(--accent-blue);
     color: var(--text-primary);
     background: var(--bg-card);
-  }
-
-  /* Status dot */
-  .status-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: #00e676;
-    display: inline-block;
-    margin-right: 6px;
-    box-shadow: 0 0 6px #00e676;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
   }
 
   /* Add app modal */
@@ -648,30 +605,30 @@
     background: var(--bg-panel);
     border: 1px solid var(--border-hover);
     border-radius: 14px;
-    padding: 24px;
-    width: 360px;
+    padding: 22px;
+    width: 340px;
     box-shadow: 0 16px 48px rgba(0,0,0,0.6);
     animation: modalIn 0.2s ease;
   }
   @keyframes modalIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
   .modal h3 {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 2px;
     color: var(--text-primary);
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     text-transform: uppercase;
   }
   .modal-app-list {
-    display: flex; flex-direction: column; gap: 6px;
+    display: flex; flex-direction: column; gap: 4px;
     max-height: 280px; overflow-y: auto;
   }
   .modal-app-list::-webkit-scrollbar { width: 4px; }
   .modal-app-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
   .modal-app-item {
     display: flex; align-items: center; gap: 12px;
-    padding: 8px 12px;
+    padding: 8px 10px;
     border-radius: 8px;
     cursor: pointer;
     border: 1px solid transparent;
@@ -681,10 +638,10 @@
     background: var(--bg-card-hover);
     border-color: var(--accent-blue);
   }
-  .modal-app-item img { width: 28px; height: 28px; object-fit: contain; }
+  .modal-app-item img { width: 26px; height: 26px; object-fit: contain; }
   .modal-app-item span { font-size: 13px; font-weight: 500; }
   .modal-cancel {
-    margin-top: 14px;
+    margin-top: 12px;
     width: 100%;
     padding: 8px;
     background: transparent;
@@ -698,8 +655,7 @@
   }
   .modal-cancel:hover { border-color: var(--accent-blue); color: var(--text-primary); }
 
-  /* scrollbars */
-  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 </style>
@@ -711,7 +667,7 @@
 <!-- ======= DASHBOARD SCREEN ======= -->
 <div class="screen active" id="screen-dashboard">
   <div class="topbar">
-    <span class="topbar-logo">JCC2</span>
+    <span class="topbar-logo">APG</span>
     <span class="topbar-title">PLATFORM</span>
     <div class="topbar-search">
       <input type="text" id="search-input" placeholder="Search apps..." autocomplete="off">
@@ -726,66 +682,44 @@
     <!-- LEFT SIDEBAR -->
     <div class="sidebar">
       <div class="sidebar-label">Navigation</div>
-      <button class="sidebar-btn active" onclick="showScreen('dashboard')">
+      <button class="sidebar-btn active" id="btn-dashboard">
         <span class="icon">⬡</span> Dashboard
       </button>
-      <button class="all-apps-btn" onclick="showScreen('allapps')">
-        <span>⊞</span> All Apps
+      <button class="sidebar-btn" id="btn-allapps" onclick="showScreen('allapps')">
+        <span class="icon">⊞</span> All Apps
       </button>
 
-      <div class="sidebar-label" style="margin-top:16px;">System</div>
-      <button class="sidebar-btn">
-        <span class="icon">☰</span> Logs
-      </button>
-      <button class="sidebar-btn">
-        <span class="icon">⚙</span> Settings
-      </button>
-      <button class="sidebar-btn">
-        <span class="icon">?</span> Help
-      </button>
+      <div class="sidebar-label" style="margin-top:10px;">Pinned Apps</div>
+      <div class="sidebar-pinned-section" id="pinned-list">
+        <!-- populated by JS -->
+      </div>
 
-      <div style="flex:1"></div>
       <button class="account-btn" onclick="showScreen('account')">
         <div class="account-silhouette">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="8" r="4" fill="currentColor"/>
             <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="currentColor"/>
           </svg>
         </div>
-        <span>Account</span>
+        <span>Account / Settings</span>
       </button>
     </div>
 
     <!-- CENTER CONTENT -->
     <div class="center-content">
-
-      <!-- Pinned Apps -->
-      <div>
-        <div class="section-header">
-          <span class="section-title">Pinned Apps</span>
-        </div>
-        <div class="pinned-scroll-wrap">
-          <div class="pinned-row" id="pinned-row">
-            <!-- populated by JS -->
-          </div>
-        </div>
-      </div>
-
-      <!-- Recent Apps -->
       <div>
         <div class="section-header">
           <span class="section-title">Recent Apps</span>
         </div>
-        <div class="recent-row" id="recent-row">
+        <div class="recent-grid" id="recent-row">
           <!-- populated by JS -->
         </div>
       </div>
-
     </div>
 
     <!-- RIGHT PANEL -->
     <div class="right-panel">
-      <div class="section-title" style="margin-bottom:4px;">System Health</div>
+      <div class="section-title" style="margin-bottom:2px;">System Health</div>
 
       <div class="health-card">
         <div class="health-label">CPU Usage</div>
@@ -825,14 +759,12 @@
 <div class="screen" id="screen-allapps">
   <div class="topbar">
     <button class="back-btn" onclick="showScreen('dashboard')">← Back</button>
-    <span class="topbar-logo" style="margin-left:12px">JCC2</span>
+    <span class="topbar-logo" style="margin-left:12px">APG</span>
     <span class="topbar-title">/ ALL APPS</span>
   </div>
   <div class="allapps-layout">
     <div class="allapps-title">All Applications</div>
-    <div class="allapps-grid" id="allapps-grid">
-      <!-- populated by JS -->
-    </div>
+    <div class="allapps-grid" id="allapps-grid"></div>
   </div>
 </div>
 
@@ -840,14 +772,14 @@
 <div class="screen" id="screen-account">
   <div class="topbar">
     <button class="back-btn" onclick="showScreen('dashboard')">← Back</button>
-    <span class="topbar-logo" style="margin-left:12px">JCC2</span>
-    <span class="topbar-title">/ ACCOUNT</span>
+    <span class="topbar-logo" style="margin-left:12px">APG</span>
+    <span class="topbar-title">/ ACCOUNT &amp; SETTINGS</span>
   </div>
   <div class="allapps-layout">
-    <div class="account-layout" style="padding:0; max-width:100%;">
+    <div class="account-layout-inner">
       <div class="account-header">
         <div class="account-avatar">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="8" r="4" fill="currentColor"/>
             <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="currentColor"/>
           </svg>
@@ -857,16 +789,14 @@
           <p><span class="status-dot"></span>Active Session &nbsp;·&nbsp; Last login: today 09:14</p>
         </div>
       </div>
-
       <div class="account-section">
         <h3>Profile</h3>
         <div class="account-field"><label>Username</label><span>admin.user</span></div>
         <div class="account-field"><label>Display Name</label><span>Admin User</span></div>
-        <div class="account-field"><label>Email</label><span>admin@jcc2.platform</span></div>
+        <div class="account-field"><label>Email</label><span>admin@apg.platform</span></div>
         <div class="account-field"><label>Department</label><span>Platform Operations</span></div>
         <div class="account-field"><label>Role</label><span class="role-badge">ADMINISTRATOR</span></div>
       </div>
-
       <div class="account-section">
         <h3>Security</h3>
         <div class="account-field"><label>Authentication</label><span>MFA Enabled</span></div>
@@ -874,7 +804,6 @@
         <div class="account-field"><label>Last Password Change</label><span>30 days ago</span></div>
         <div class="account-field"><label>Access Level</label><span>Clearance Level 3</span></div>
       </div>
-
       <div class="account-section">
         <h3>Permissions</h3>
         <div class="permission-list">
@@ -921,37 +850,31 @@ const APP_IMAGES = {
 
 const ALL_APPS = [{"key": "accumulo", "name": "Accumulo"}, {"key": "admin", "name": "Admin"}, {"key": "airflow", "name": "Airflow"}, {"key": "consul", "name": "Consul"}, {"key": "documentation", "name": "Documentation"}, {"key": "grafana", "name": "Grafana"}, {"key": "kibana", "name": "Kibana"}, {"key": "nagios", "name": "Nagios"}, {"key": "nifi", "name": "NiFi"}, {"key": "nifi_registry", "name": "NiFi Registry"}, {"key": "prometheus", "name": "Prometheus"}, {"key": "rda_deployer", "name": "RDA Deployer"}, {"key": "spark", "name": "Spark"}, {"key": "unity", "name": "Unity"}];
 
-// State
 let recentApps = [];
 let pinnedApps = [];
 
-// Render pinned
+// ===== PINNED (sidebar vertical list) =====
 function renderPinned() {
-  const row = document.getElementById('pinned-row');
-  row.innerHTML = '';
+  const list = document.getElementById('pinned-list');
+  list.innerHTML = '';
   pinnedApps.forEach((app, i) => {
-    const tile = document.createElement('div');
-    tile.className = 'app-tile';
-    tile.dataset.name = app.name;
-    tile.innerHTML = `
-      <div class="remove-btn" onclick="removePinned(event, ${i})">✕</div>
+    const row = document.createElement('div');
+    row.className = 'pinned-app-row';
+    row.innerHTML = `
       <img src="${APP_IMAGES[app.key]}" alt="${app.name}">
-      <span class="tile-name">${app.name}</span>
+      <span class="pin-name">${app.name}</span>
+      <div class="remove-pin" onclick="removePinned(event,${i})">✕</div>
     `;
-    tile.addEventListener('click', (e) => { if (!e.target.classList.contains('remove-btn')) launchApp(app); });
-    addTooltip(tile, app.name);
-    row.appendChild(tile);
+    row.addEventListener('click', (e) => { if (!e.target.classList.contains('remove-pin')) launchApp(app); });
+    addTooltip(row, app.name);
+    list.appendChild(row);
   });
-
-  // "Add App..." slot
-  if (pinnedApps.length < 12) {
-    const addTile = document.createElement('div');
-    addTile.className = 'app-tile add-tile';
-    addTile.title = 'Add pinned app';
-    addTile.innerHTML = '+';
-    addTile.onclick = openAddModal;
-    row.appendChild(addTile);
-  }
+  // Add pin button
+  const addRow = document.createElement('div');
+  addRow.className = 'add-pin-row';
+  addRow.innerHTML = '<span style="font-size:15px;line-height:1">+</span><span>Add App...</span>';
+  addRow.onclick = openAddModal;
+  list.appendChild(addRow);
 }
 
 function removePinned(e, idx) {
@@ -960,18 +883,17 @@ function removePinned(e, idx) {
   renderPinned();
 }
 
-// Render recent
+// ===== RECENT APPS (max 5) =====
 function renderRecent() {
   const row = document.getElementById('recent-row');
   row.innerHTML = '';
   if (recentApps.length === 0) {
-    row.innerHTML = '<span style="color:var(--text-muted);font-size:12px;padding:8px;">No recent apps yet.</span>';
+    row.innerHTML = '<span style="color:var(--text-muted);font-size:13px;padding:12px;grid-column:1/-1;">No recent apps yet. Click an app to get started.</span>';
     return;
   }
-  recentApps.slice(0, 8).forEach(app => {
+  recentApps.slice(0, 5).forEach(app => {
     const tile = document.createElement('div');
     tile.className = 'recent-tile';
-    tile.dataset.name = app.name;
     tile.innerHTML = `<img src="${APP_IMAGES[app.key]}" alt="${app.name}"><span class="tile-name">${app.name}</span>`;
     tile.onclick = () => launchApp(app);
     addTooltip(tile, app.name);
@@ -980,12 +902,11 @@ function renderRecent() {
 }
 
 function launchApp(app) {
-  // Add to recent
   recentApps = [app, ...recentApps.filter(a => a.key !== app.key)];
   renderRecent();
 }
 
-// All Apps screen
+// ===== ALL APPS =====
 function renderAllApps() {
   const grid = document.getElementById('allapps-grid');
   grid.innerHTML = '';
@@ -998,7 +919,19 @@ function renderAllApps() {
   });
 }
 
-// Modal
+// ===== SCREEN NAV =====
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
+  // Dashboard button stays active always; All Apps button never gets active class
+  const dashBtn = document.getElementById('btn-dashboard');
+  const allBtn = document.getElementById('btn-allapps');
+  dashBtn.classList.add('active');
+  allBtn.classList.remove('active');
+  if (name === 'allapps') renderAllApps();
+}
+
+// ===== MODAL =====
 function openAddModal() {
   const list = document.getElementById('modal-app-list');
   list.innerHTML = '';
@@ -1016,35 +949,20 @@ function openAddModal() {
   }
   document.getElementById('modal-overlay').classList.add('show');
 }
-
 function closeModal() {
   document.getElementById('modal-overlay').classList.remove('show');
 }
 
-// Screen navigation
-function showScreen(name) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('screen-' + name).classList.add('active');
-  if (name === 'allapps') renderAllApps();
-}
-
-// Search
+// ===== SEARCH =====
 const searchInput = document.getElementById('search-input');
 const searchDropdown = document.getElementById('search-dropdown');
 searchInput.addEventListener('input', () => {
   const q = searchInput.value.trim().toLowerCase();
   if (!q) { searchDropdown.classList.remove('show'); return; }
   const results = ALL_APPS.filter(a => a.name.toLowerCase().includes(q));
-  if (results.length === 0) {
-    searchDropdown.innerHTML = '<div class="search-no-results">No apps found</div>';
-  } else {
-    searchDropdown.innerHTML = results.map(a =>
-      `<div class="search-result-item" onclick="handleSearchClick('${a.key}')">
-        <img src="${APP_IMAGES[a.key]}" alt="${a.name}">
-        <span>${a.name}</span>
-      </div>`
-    ).join('');
-  }
+  searchDropdown.innerHTML = results.length === 0
+    ? '<div class="search-no-results">No apps found</div>'
+    : results.map(a => `<div class="search-result-item" onclick="handleSearchClick('${a.key}')"><img src="${APP_IMAGES[a.key]}" alt="${a.name}"><span>${a.name}</span></div>`).join('');
   searchDropdown.classList.add('show');
 });
 document.addEventListener('click', (e) => {
@@ -1058,17 +976,14 @@ function handleSearchClick(key) {
   searchDropdown.classList.remove('show');
 }
 
-// Tooltip
+// ===== TOOLTIP =====
 const tooltip = document.getElementById('tooltip');
 let tooltipTimer = null;
 function addTooltip(el, name) {
-  el.addEventListener('mouseenter', (e) => {
+  el.addEventListener('mouseenter', () => {
     tooltipTimer = setTimeout(() => {
       tooltip.textContent = name;
       tooltip.style.display = 'block';
-      const rect = el.getBoundingClientRect();
-      tooltip.style.left = (rect.left + rect.width/2 - tooltip.offsetWidth/2) + 'px';
-      tooltip.style.top = (rect.top - 30) + 'px';
     }, 600);
   });
   el.addEventListener('mouseleave', () => {
@@ -1076,14 +991,12 @@ function addTooltip(el, name) {
     tooltip.style.display = 'none';
   });
   el.addEventListener('mousemove', (e) => {
-    if (tooltip.style.display === 'block') {
-      tooltip.style.left = (e.clientX - tooltip.offsetWidth/2) + 'px';
-      tooltip.style.top = (e.clientY - 34) + 'px';
-    }
+    tooltip.style.left = (e.clientX - tooltip.offsetWidth/2) + 'px';
+    tooltip.style.top = (e.clientY - 34) + 'px';
   });
 }
 
-// Clock
+// ===== CLOCK =====
 function updateClock() {
   const now = new Date();
   document.getElementById('clock').textContent =
@@ -1092,15 +1005,17 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// Sparklines
+// ===== SPARKLINES =====
 function drawSparkline(canvasId, data, color) {
   const canvas = document.getElementById(canvasId);
   if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.offsetWidth || 200;
+  const h = 44;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
   const ctx = canvas.getContext('2d');
-  canvas.width = canvas.offsetWidth * window.devicePixelRatio || 220;
-  canvas.height = 50 * window.devicePixelRatio;
-  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  const w = canvas.offsetWidth || 220, h = 50;
+  ctx.scale(dpr, dpr);
   const max = Math.max(...data), min = Math.min(...data);
   const range = max - min || 1;
   ctx.clearRect(0,0,w,h);
@@ -1115,21 +1030,24 @@ function drawSparkline(canvasId, data, color) {
     i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
   });
   ctx.stroke();
-  // fill
-  ctx.lineTo(w, h); ctx.lineTo(0, h); ctx.closePath();
-  ctx.fillStyle = color.replace(')', ',0.1)').replace('rgb','rgba');
+  ctx.lineTo(w,h); ctx.lineTo(0,h); ctx.closePath();
+  const grad = ctx.createLinearGradient(0,0,0,h);
+  grad.addColorStop(0, color.replace('rgb','rgba').replace(')',',0.15)'));
+  grad.addColorStop(1, 'transparent');
+  ctx.fillStyle = grad;
+  ctx.shadowBlur = 0;
   ctx.fill();
 }
 
-// Health simulation
-const cpuHistory = Array.from({length:20}, () => 60+Math.random()*30);
+// ===== HEALTH SIMULATION =====
+const cpuHistory = Array.from({length:20}, () => 55+Math.random()*30);
 const memHistory = Array.from({length:20}, () => 75+Math.random()*15);
-const netHistory = Array.from({length:20}, () => 30+Math.random()*50);
+const netHistory = Array.from({length:20}, () => 30+Math.random()*55);
 
 function updateHealth() {
-  cpuHistory.push(55 + Math.random()*35); cpuHistory.shift();
-  memHistory.push(78 + Math.random()*14); memHistory.shift();
-  netHistory.push(25 + Math.random()*60); netHistory.shift();
+  cpuHistory.push(50+Math.random()*38); cpuHistory.shift();
+  memHistory.push(76+Math.random()*16); memHistory.shift();
+  netHistory.push(25+Math.random()*62); netHistory.shift();
   const cpu = Math.round(cpuHistory[cpuHistory.length-1]);
   const mem = Math.round(memHistory[memHistory.length-1]);
   document.getElementById('cpu-val').textContent = cpu + '%';
@@ -1141,7 +1059,7 @@ function updateHealth() {
   drawSparkline('spark-net', netHistory, '#1e90ff');
 }
 setInterval(updateHealth, 2000);
-setTimeout(updateHealth, 100);
+setTimeout(updateHealth, 150);
 
 // Init
 renderPinned();
