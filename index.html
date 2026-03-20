@@ -31,12 +31,11 @@
     overflow: hidden;
   }
 
-  /* ======= SCREENS ======= */
   .screen { display: none; width: 100vw; height: 100vh; overflow: hidden; }
   .screen.active { display: flex; flex-direction: column; animation: fadeIn 0.3s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ======= TOP BAR ======= */
+  /* TOP BAR */
   .topbar {
     background: var(--bg-panel);
     border-bottom: 1px solid var(--border);
@@ -50,23 +49,16 @@
   }
   .topbar-logo {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--accent-blue);
-    letter-spacing: 2px;
+    font-size: 22px; font-weight: 700;
+    color: var(--accent-blue); letter-spacing: 2px;
   }
   .topbar-title {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    letter-spacing: 1px;
+    font-size: 16px; font-weight: 500;
+    color: var(--text-secondary); letter-spacing: 1px;
   }
-  /* Centered search bar using absolute positioning */
   .topbar-search {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute; left: 50%; transform: translateX(-50%);
     width: 360px;
   }
   .topbar-search input {
@@ -76,56 +68,41 @@
     border-radius: 8px;
     padding: 7px 36px 7px 14px;
     color: var(--text-primary);
-    font-family: 'Exo 2', sans-serif;
-    font-size: 13px;
-    outline: none;
-    transition: border 0.2s, box-shadow 0.2s;
+    font-family: 'Exo 2', sans-serif; font-size: 13px;
+    outline: none; transition: border 0.2s, box-shadow 0.2s;
   }
   .topbar-search input:focus {
     border-color: var(--accent-blue);
     box-shadow: 0 0 0 3px var(--glow);
   }
   .topbar-search .search-icon {
-    position: absolute;
-    right: 10px; top: 50%;
+    position: absolute; right: 10px; top: 50%;
     transform: translateY(-50%);
-    color: var(--text-muted);
-    font-size: 15px;
-    pointer-events: none;
+    color: var(--text-muted); font-size: 15px; pointer-events: none;
   }
   .search-dropdown {
-    position: absolute;
-    top: calc(100% + 6px);
-    left: 0; right: 0;
+    position: absolute; top: calc(100% + 6px); left: 0; right: 0;
     background: var(--bg-panel);
     border: 1px solid var(--border-hover);
-    border-radius: 8px;
-    overflow: hidden;
-    display: none;
-    z-index: 100;
-    box-shadow: var(--shadow);
+    border-radius: 8px; overflow: hidden;
+    display: none; z-index: 100; box-shadow: var(--shadow);
   }
   .search-dropdown.show { display: block; }
   .search-result-item {
     display: flex; align-items: center; gap: 10px;
-    padding: 9px 14px;
-    cursor: pointer;
-    transition: background 0.15s;
+    padding: 9px 14px; cursor: pointer; transition: background 0.15s;
   }
   .search-result-item:hover { background: var(--bg-card-hover); }
   .search-result-item img { width: 24px; height: 24px; object-fit: contain; }
   .search-result-item span { font-size: 13px; color: var(--text-primary); }
   .search-no-results { padding: 10px 14px; font-size: 13px; color: var(--text-muted); }
-
   .topbar-spacer { flex: 1; }
   .topbar-time {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 15px;
-    color: var(--text-secondary);
-    letter-spacing: 1px;
+    font-size: 15px; color: var(--text-secondary); letter-spacing: 1px;
   }
 
-  /* ======= MAIN LAYOUT ======= */
+  /* LAYOUT */
   .main-layout {
     flex: 1;
     display: grid;
@@ -133,525 +110,314 @@
     overflow: hidden;
   }
 
-  /* ======= LEFT SIDEBAR ======= */
+  /* SIDEBAR */
   .sidebar {
     background: var(--bg-panel);
     border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    padding: 16px 12px;
-    gap: 4px;
+    display: flex; flex-direction: column;
+    padding: 16px 12px; gap: 4px;
     overflow-y: auto;
   }
   .sidebar-label {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    text-transform: uppercase;
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--text-muted); text-transform: uppercase;
     margin: 8px 0 2px 6px;
   }
   .sidebar-btn {
     display: flex; align-items: center; gap: 10px;
-    padding: 9px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s, outline 0.15s;
-    color: var(--text-secondary);
-    font-size: 13px;
-    font-weight: 500;
-    border: none;
-    background: transparent;
-    width: 100%;
-    text-align: left;
+    padding: 9px 12px; border-radius: 8px;
+    cursor: pointer; transition: background 0.15s, color 0.15s, outline 0.15s;
+    color: var(--text-secondary); font-size: 13px; font-weight: 500;
+    border: none; background: transparent;
+    width: 100%; text-align: left;
     outline: 1px solid transparent;
   }
-  .sidebar-btn:hover {
-    background: var(--bg-card-hover);
-    color: var(--text-primary);
-  }
+  .sidebar-btn:hover { background: var(--bg-card-hover); color: var(--text-primary); }
   .sidebar-btn.active {
-    background: var(--bg-card-hover);
-    color: var(--text-primary);
+    background: var(--bg-card-hover); color: var(--text-primary);
     outline: 1px solid rgba(30,144,255,0.35);
   }
   .sidebar-btn .icon { font-size: 15px; width: 18px; text-align: center; }
 
-  /* ======= PINNED APPS IN SIDEBAR ======= */
+  /* PINNED IN SIDEBAR */
   .sidebar-pinned-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    overflow-y: auto;
-    min-height: 0;
+    flex: 1; display: flex; flex-direction: column; gap: 4px;
+    overflow-y: auto; min-height: 0;
   }
   .sidebar-pinned-section::-webkit-scrollbar { width: 3px; }
   .sidebar-pinned-section::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
   .pinned-app-row {
-    position: relative;
-    display: flex; align-items: center; gap: 10px;
-    padding: 7px 10px;
-    border-radius: 8px;
-    cursor: pointer;
+    position: relative; display: flex; align-items: center; gap: 10px;
+    padding: 7px 10px; border-radius: 8px; cursor: pointer;
     transition: background 0.15s, outline 0.15s;
-    color: var(--text-secondary);
-    font-size: 12px;
-    font-weight: 500;
+    color: var(--text-secondary); font-size: 12px; font-weight: 500;
     outline: 1px solid transparent;
   }
   .pinned-app-row:hover {
-    background: var(--bg-card-hover);
-    color: var(--text-primary);
+    background: var(--bg-card-hover); color: var(--text-primary);
     outline: 1px solid var(--border);
   }
-  .pinned-app-row img {
-    width: 22px; height: 22px;
-    object-fit: contain;
-    flex-shrink: 0;
-  }
-  .pinned-app-row .pin-name {
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  .pinned-app-row img { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; }
+  .pinned-app-row .pin-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .pinned-app-row .remove-pin {
-    display: none;
-    width: 16px; height: 16px;
-    background: rgba(255,82,82,0.15);
-    border: 1px solid rgba(255,82,82,0.3);
-    border-radius: 3px;
-    color: #ff5252;
-    font-size: 10px;
+    display: none; width: 16px; height: 16px;
+    background: rgba(255,82,82,0.15); border: 1px solid rgba(255,82,82,0.3);
+    border-radius: 3px; color: #ff5252; font-size: 10px;
     align-items: center; justify-content: center;
-    cursor: pointer;
-    flex-shrink: 0;
+    cursor: pointer; flex-shrink: 0;
   }
   .pinned-app-row:hover .remove-pin { display: flex; }
-
   .add-pin-row {
     display: flex; align-items: center; gap: 10px;
-    padding: 7px 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    color: var(--text-muted);
-    font-size: 12px;
+    padding: 7px 10px; border-radius: 8px; cursor: pointer;
+    color: var(--text-muted); font-size: 12px;
     border: 1px dashed var(--text-muted);
-    transition: all 0.15s;
-    margin-top: 2px;
+    transition: all 0.15s; margin-top: 2px;
   }
   .add-pin-row:hover {
-    border-color: var(--accent-blue);
-    color: var(--accent-blue);
+    border-color: var(--accent-blue); color: var(--accent-blue);
     background: rgba(30,144,255,0.05);
   }
 
-  /* Account button */
+  /* ACCOUNT BTN */
   .account-btn {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 10px 8px;
-    display: flex; flex-direction: column;
-    align-items: center; gap: 5px;
-    cursor: pointer;
-    transition: all 0.2s;
-    width: 100%;
-    margin-top: 10px;
-    flex-shrink: 0;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px 10px 8px;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+    cursor: pointer; transition: all 0.2s; width: 100%; margin-top: 10px; flex-shrink: 0;
   }
   .account-btn:hover {
-    border-color: var(--accent-blue);
-    background: var(--bg-card-hover);
+    border-color: var(--accent-blue); background: var(--bg-card-hover);
     box-shadow: 0 0 12px var(--glow);
   }
   .account-silhouette {
-    width: 36px; height: 36px;
-    background: var(--bg-dark);
-    border: 2px solid var(--accent-blue);
-    border-radius: 50%;
+    width: 36px; height: 36px; background: var(--bg-dark);
+    border: 2px solid var(--accent-blue); border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     color: var(--accent-blue);
-    font-size: 18px;
   }
   .account-btn span {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: var(--text-secondary);
-    text-transform: uppercase;
+    font-family: 'Rajdhani', sans-serif; font-size: 11px;
+    letter-spacing: 1px; color: var(--text-secondary); text-transform: uppercase;
   }
 
-  /* ======= CENTER ======= */
+  /* CENTER */
   .center-content {
-    padding: 24px 28px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    padding: 24px 28px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 20px;
   }
-
-  .section-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 12px;
-  }
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
   .section-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    color: var(--text-secondary);
-    text-transform: uppercase;
+    font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600;
+    letter-spacing: 2px; color: var(--text-secondary); text-transform: uppercase;
   }
 
-  /* Tooltip */
+  /* TOOLTIP — wider, description style */
   .tooltip {
     position: fixed;
     background: var(--bg-panel);
     border: 1px solid var(--accent-blue);
     color: var(--text-primary);
-    font-size: 11px;
-    padding: 4px 8px;
-    border-radius: 5px;
+    font-size: 12px; line-height: 1.5;
+    padding: 8px 12px;
+    border-radius: 7px;
     pointer-events: none;
     z-index: 9999;
-    white-space: nowrap;
+    max-width: 260px;
+    white-space: normal;
+    word-wrap: break-word;
     display: none;
     font-family: 'Exo 2', sans-serif;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  }
+  .tooltip .tt-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px; font-weight: 700; color: var(--accent-blue);
+    margin-bottom: 4px; letter-spacing: 0.5px;
   }
 
-  /* Recent Apps — larger tiles */
+  /* RECENT APPS */
   .recent-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 14px;
   }
   .recent-tile {
-    position: relative;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 24px 16px 18px;
-    display: flex; flex-direction: column;
-    align-items: center; gap: 12px;
-    cursor: pointer;
-    transition: all 0.2s;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px 16px 18px;
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    cursor: pointer; transition: all 0.2s;
   }
   .recent-tile:hover {
-    border-color: var(--accent-teal);
-    background: var(--bg-card-hover);
-    box-shadow: 0 0 18px rgba(0,212,200,0.2);
-    transform: translateY(-3px);
+    border-color: var(--accent-teal); background: var(--bg-card-hover);
+    box-shadow: 0 0 18px rgba(0,212,200,0.2); transform: translateY(-3px);
   }
-  .recent-tile img {
-    width: 52px; height: 52px;
-    object-fit: contain;
-  }
+  .recent-tile img { width: 52px; height: 52px; object-fit: contain; }
   .recent-tile .tile-name {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-primary);
-    text-align: center;
-    font-family: 'Rajdhani', sans-serif;
-    letter-spacing: 0.5px;
-    max-width: 140px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-size: 12px; font-weight: 600; color: var(--text-primary);
+    text-align: center; font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px;
+    max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
 
-  /* ======= RIGHT PANEL ======= */
+  /* RIGHT PANEL */
   .right-panel {
-    background: var(--bg-panel);
-    border-left: 1px solid var(--border);
-    padding: 18px 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    overflow-y: auto;
+    background: var(--bg-panel); border-left: 1px solid var(--border);
+    padding: 18px 14px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto;
   }
-
-  /* Health Charts */
   .health-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px;
   }
   .health-label {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin-bottom: 8px;
+    font-family: 'Rajdhani', sans-serif; font-size: 10px; letter-spacing: 1.5px;
+    color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;
   }
   .health-value {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 6px;
+    font-family: 'Rajdhani', sans-serif; font-size: 26px; font-weight: 700;
+    line-height: 1; margin-bottom: 6px;
   }
   .health-value.good { color: #00e676; }
   .health-value.warn { color: var(--accent-gold); }
-  .health-value.crit { color: #ff5252; }
-  .mini-bar-wrap {
-    height: 5px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 3px;
-    overflow: hidden;
-    margin-bottom: 5px;
-  }
-  .mini-bar {
-    height: 100%;
-    border-radius: 3px;
-    transition: width 1s ease;
-  }
+  .mini-bar-wrap { height: 5px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; margin-bottom: 5px; }
+  .mini-bar { height: 100%; border-radius: 3px; transition: width 1s ease; }
   .mini-bar.good { background: linear-gradient(90deg, #00e676, #00c853); }
   .mini-bar.warn { background: linear-gradient(90deg, #ffd740, #ff9100); }
-  .mini-bar.crit { background: linear-gradient(90deg, #ff5252, #d32f2f); }
-  .health-sub {
-    font-size: 10px;
-    color: var(--text-muted);
-  }
-  .sparkline-canvas {
-    width: 100%;
-    height: 44px;
-    margin-top: 6px;
-  }
-
-  /* ======= ALL APPS SCREEN ======= */
-  .allapps-layout {
-    flex: 1;
-    padding: 24px 32px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .allapps-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: var(--text-primary);
-    text-transform: uppercase;
-  }
-  .allapps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 14px;
-  }
-  .app-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 12px 14px;
-    display: flex; flex-direction: column;
-    align-items: center; gap: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: center;
-  }
-  .app-card:hover {
-    border-color: var(--accent-blue);
-    background: var(--bg-card-hover);
-    box-shadow: 0 0 18px var(--glow);
-    transform: translateY(-3px);
-  }
-  .app-card img {
-    width: 52px; height: 52px;
-    object-fit: contain;
-  }
-  .app-card-name {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-primary);
-    font-family: 'Rajdhani', sans-serif;
-    letter-spacing: 0.5px;
-  }
-
-  /* ======= ACCOUNT SCREEN ======= */
-  .account-layout-inner {
-    max-width: 680px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .account-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .account-avatar {
-    width: 72px; height: 72px;
-    background: var(--bg-card);
-    border: 2px solid var(--accent-blue);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--accent-blue);
-    box-shadow: 0 0 20px var(--glow);
-    flex-shrink: 0;
-  }
-  .account-info h2 {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-  .account-info p {
-    font-size: 12px;
-    color: var(--text-secondary);
-    margin-top: 4px;
-  }
-  .account-section {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px;
-  }
-  .account-section h3 {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-  .account-field {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 9px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .account-field:last-child { border-bottom: none; }
-  .account-field label {
-    font-size: 11px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  .account-field span {
-    font-size: 13px;
-    color: var(--text-primary);
-    font-weight: 500;
-  }
-  .role-badge {
-    background: rgba(30,144,255,0.15);
-    border: 1px solid rgba(30,144,255,0.3);
-    color: var(--accent-blue);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 20px;
-    letter-spacing: 1px;
-  }
-  .permission-list {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .perm-tag {
-    background: var(--bg-dark);
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 6px;
-  }
+  .health-sub { font-size: 10px; color: var(--text-muted); }
+  .sparkline-canvas { width: 100%; height: 44px; margin-top: 6px; }
   .status-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: #00e676;
-    display: inline-block;
-    margin-right: 5px;
-    box-shadow: 0 0 5px #00e676;
-    animation: pulse 2s infinite;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #00e676; display: inline-block; margin-right: 5px;
+    box-shadow: 0 0 5px #00e676; animation: pulse 2s infinite;
   }
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-  .back-btn {
-    display: flex; align-items: center; gap: 8px;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    padding: 7px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 13px;
-    transition: all 0.2s;
+  /* ALL APPS SCREEN */
+  .allapps-layout {
+    flex: 1; padding: 24px 32px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 28px;
   }
-  .back-btn:hover {
-    border-color: var(--accent-blue);
-    color: var(--text-primary);
-    background: var(--bg-card);
+  .allapps-title {
+    font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700;
+    letter-spacing: 3px; color: var(--text-primary); text-transform: uppercase;
+  }
+  .cat-section { display: flex; flex-direction: column; gap: 12px; }
+  .cat-header {
+    display: flex; align-items: center; gap: 10px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+  .cat-icon { font-size: 16px; }
+  .cat-title {
+    font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; color: var(--accent-blue); text-transform: uppercase;
+  }
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+  }
+  .app-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px 10px 12px;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    cursor: pointer; transition: all 0.2s; text-align: center;
+  }
+  .app-card:hover {
+    border-color: var(--accent-blue); background: var(--bg-card-hover);
+    box-shadow: 0 0 18px var(--glow); transform: translateY(-3px);
+  }
+  .app-card img { width: 44px; height: 44px; object-fit: contain; }
+  .app-card-name {
+    font-size: 11px; font-weight: 600; color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px;
+    line-height: 1.3;
   }
 
-  /* Add app modal */
+  /* ACCOUNT SCREEN */
+  .account-layout-inner {
+    max-width: 680px; width: 100%;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .account-header { display: flex; align-items: center; gap: 20px; }
+  .account-avatar {
+    width: 72px; height: 72px; background: var(--bg-card);
+    border: 2px solid var(--accent-blue); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent-blue); box-shadow: 0 0 20px var(--glow); flex-shrink: 0;
+  }
+  .account-info h2 {
+    font-family: 'Rajdhani', sans-serif; font-size: 22px;
+    font-weight: 700; letter-spacing: 1px;
+  }
+  .account-info p { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+  .account-section {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px;
+  }
+  .account-section h3 {
+    font-family: 'Rajdhani', sans-serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 14px;
+  }
+  .account-field {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 0; border-bottom: 1px solid var(--border);
+  }
+  .account-field:last-child { border-bottom: none; }
+  .account-field label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+  .account-field span { font-size: 13px; color: var(--text-primary); font-weight: 500; }
+  .role-badge {
+    background: rgba(30,144,255,0.15); border: 1px solid rgba(30,144,255,0.3);
+    color: var(--accent-blue); font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 20px; letter-spacing: 1px;
+  }
+  .permission-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .perm-tag {
+    background: var(--bg-dark); border: 1px solid var(--border);
+    color: var(--text-secondary); font-size: 11px; padding: 4px 10px; border-radius: 6px;
+  }
+
+  .back-btn {
+    display: flex; align-items: center; gap: 8px;
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text-secondary); padding: 7px 14px; border-radius: 8px;
+    cursor: pointer; font-family: 'Exo 2', sans-serif; font-size: 13px; transition: all 0.2s;
+  }
+  .back-btn:hover { border-color: var(--accent-blue); color: var(--text-primary); background: var(--bg-card); }
+
   .modal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.7);
-    display: none; align-items: center; justify-content: center;
-    z-index: 1000;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    display: none; align-items: center; justify-content: center; z-index: 1000;
   }
   .modal-overlay.show { display: flex; }
   .modal {
-    background: var(--bg-panel);
-    border: 1px solid var(--border-hover);
-    border-radius: 14px;
-    padding: 22px;
-    width: 340px;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.6);
-    animation: modalIn 0.2s ease;
+    background: var(--bg-panel); border: 1px solid var(--border-hover);
+    border-radius: 14px; padding: 22px; width: 340px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.6); animation: modalIn 0.2s ease;
   }
   @keyframes modalIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
   .modal h3 {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--text-primary);
-    margin-bottom: 14px;
-    text-transform: uppercase;
+    font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 700;
+    letter-spacing: 2px; color: var(--text-primary); margin-bottom: 14px; text-transform: uppercase;
   }
   .modal-app-list {
-    display: flex; flex-direction: column; gap: 4px;
-    max-height: 280px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 4px; max-height: 280px; overflow-y: auto;
   }
   .modal-app-list::-webkit-scrollbar { width: 4px; }
   .modal-app-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
   .modal-app-item {
     display: flex; align-items: center; gap: 12px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: all 0.15s;
+    padding: 8px 10px; border-radius: 8px; cursor: pointer;
+    border: 1px solid transparent; transition: all 0.15s;
   }
-  .modal-app-item:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--accent-blue);
-  }
+  .modal-app-item:hover { background: var(--bg-card-hover); border-color: var(--accent-blue); }
   .modal-app-item img { width: 26px; height: 26px; object-fit: contain; }
   .modal-app-item span { font-size: 13px; font-weight: 500; }
   .modal-cancel {
-    margin-top: 12px;
-    width: 100%;
-    padding: 8px;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text-secondary);
-    font-family: 'Exo 2', sans-serif;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.15s;
+    margin-top: 12px; width: 100%; padding: 8px;
+    background: transparent; border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text-secondary);
+    font-family: 'Exo 2', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.15s;
   }
   .modal-cancel:hover { border-color: var(--accent-blue); color: var(--text-primary); }
 
@@ -662,9 +428,9 @@
 </head>
 <body>
 
-<div class="tooltip" id="tooltip"></div>
+<div class="tooltip" id="tooltip"><div class="tt-name" id="tt-name"></div><div id="tt-desc"></div></div>
 
-<!-- ======= DASHBOARD SCREEN ======= -->
+<!-- DASHBOARD -->
 <div class="screen active" id="screen-dashboard">
   <div class="topbar">
     <span class="topbar-logo">APG</span>
@@ -677,9 +443,7 @@
     <div class="topbar-spacer"></div>
     <span class="topbar-time" id="clock"></span>
   </div>
-
   <div class="main-layout">
-    <!-- LEFT SIDEBAR -->
     <div class="sidebar">
       <div class="sidebar-label">Navigation</div>
       <button class="sidebar-btn active" id="btn-dashboard">
@@ -688,15 +452,11 @@
       <button class="sidebar-btn" id="btn-allapps" onclick="showScreen('allapps')">
         <span class="icon">⊞</span> All Apps
       </button>
-
       <div class="sidebar-label" style="margin-top:10px;">Pinned Apps</div>
-      <div class="sidebar-pinned-section" id="pinned-list">
-        <!-- populated by JS -->
-      </div>
-
+      <div class="sidebar-pinned-section" id="pinned-list"></div>
       <button class="account-btn" onclick="showScreen('account')">
         <div class="account-silhouette">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
             <circle cx="12" cy="8" r="4" fill="currentColor"/>
             <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="currentColor"/>
           </svg>
@@ -704,23 +464,16 @@
         <span>Account / Settings</span>
       </button>
     </div>
-
-    <!-- CENTER CONTENT -->
     <div class="center-content">
       <div>
         <div class="section-header">
           <span class="section-title">Recent Apps</span>
         </div>
-        <div class="recent-grid" id="recent-row">
-          <!-- populated by JS -->
-        </div>
+        <div class="recent-grid" id="recent-row"></div>
       </div>
     </div>
-
-    <!-- RIGHT PANEL -->
     <div class="right-panel">
       <div class="section-title" style="margin-bottom:2px;">System Health</div>
-
       <div class="health-card">
         <div class="health-label">CPU Usage</div>
         <div class="health-value good" id="cpu-val">72%</div>
@@ -728,7 +481,6 @@
         <div class="health-sub">8 cores active</div>
         <canvas class="sparkline-canvas" id="spark-cpu"></canvas>
       </div>
-
       <div class="health-card">
         <div class="health-label">Memory</div>
         <div class="health-value warn" id="mem-val">84%</div>
@@ -736,7 +488,6 @@
         <div class="health-sub">53.8 GB / 64 GB</div>
         <canvas class="sparkline-canvas" id="spark-mem"></canvas>
       </div>
-
       <div class="health-card">
         <div class="health-label">Network I/O</div>
         <div class="health-value good" id="net-val">1.2 GB/s</div>
@@ -744,7 +495,6 @@
         <div class="health-sub">↑ 480 MB/s &nbsp; ↓ 740 MB/s</div>
         <canvas class="sparkline-canvas" id="spark-net"></canvas>
       </div>
-
       <div class="health-card">
         <div class="health-label">Cluster Nodes</div>
         <div class="health-value good">24 / 24</div>
@@ -755,20 +505,20 @@
   </div>
 </div>
 
-<!-- ======= ALL APPS SCREEN ======= -->
+<!-- ALL APPS -->
 <div class="screen" id="screen-allapps">
   <div class="topbar">
     <button class="back-btn" onclick="showScreen('dashboard')">← Back</button>
     <span class="topbar-logo" style="margin-left:12px">APG</span>
     <span class="topbar-title">/ ALL APPS</span>
   </div>
-  <div class="allapps-layout">
+  <div class="allapps-layout" id="allapps-layout">
     <div class="allapps-title">All Applications</div>
-    <div class="allapps-grid" id="allapps-grid"></div>
+    <div id="allapps-cats"></div>
   </div>
 </div>
 
-<!-- ======= ACCOUNT SCREEN ======= -->
+<!-- ACCOUNT -->
 <div class="screen" id="screen-account">
   <div class="topbar">
     <button class="back-btn" onclick="showScreen('dashboard')">← Back</button>
@@ -779,7 +529,7 @@
     <div class="account-layout-inner">
       <div class="account-header">
         <div class="account-avatar">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
             <circle cx="12" cy="8" r="4" fill="currentColor"/>
             <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="currentColor"/>
           </svg>
@@ -807,21 +557,16 @@
       <div class="account-section">
         <h3>Permissions</h3>
         <div class="permission-list">
-          <span class="perm-tag">Read All</span>
-          <span class="perm-tag">Write All</span>
-          <span class="perm-tag">Deploy Services</span>
-          <span class="perm-tag">Manage Users</span>
-          <span class="perm-tag">View Logs</span>
-          <span class="perm-tag">System Config</span>
-          <span class="perm-tag">Network Admin</span>
-          <span class="perm-tag">Data Access</span>
+          <span class="perm-tag">Read All</span><span class="perm-tag">Write All</span>
+          <span class="perm-tag">Deploy Services</span><span class="perm-tag">Manage Users</span>
+          <span class="perm-tag">View Logs</span><span class="perm-tag">System Config</span>
+          <span class="perm-tag">Network Admin</span><span class="perm-tag">Data Access</span>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Add App Modal -->
 <div class="modal-overlay" id="modal-overlay">
   <div class="modal">
     <h3>Pin an App</h3>
@@ -848,12 +593,43 @@ const APP_IMAGES = {
   "unity": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAJBCAYAAACuxgqTAAAACXBIWXMAABYlAAAWJQFJUiTwAAAgAElEQVR4nO3df7Bd5Xkf+lf8cHuLHMi9ExCdBqmA2rnQkRB1HAOVVE9BNjhGwQb1HyTbQDPQWmJqobbAlZFDMWmF6CC5gWkRJIL+ERnMgGOIgY6D1EAceyKkKb69FRCwM2OBZ1pkpExCDNx5tnSwENLZ56x37bXWXu/nM4OFR+icrbX32eu7n/d5n3fG8Rcs+ccJAKAgx6WUvuMJBwBKcoxnGwAojQAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAoznGecoDxtuKSJWn2rFM8i9N0630PjNXjpV4zjr9gybuuKePiJ3/wjXTizBMae7QPPPFUuvq2O6b8388+9ZS0dOH5afGC+Wn+3DPSabNOHunjGxcnf/Kz6Y19+6b0aC9deH5auuj8wbVcdM680i/dwA0b70kbtz5y1N9v+ueiD3a9+HL6yOevK/0yFE0FiLERN8am3+Qf3fbslP67uFl/+arlafnFF438MY2bCJFTCT9rr1qeVi27zI38CLY8/tRRfy+qP67Z9G15/Mlxe8jUTABibERVoEl79+1Pj20fHoDiBnTvTau9kI5iWIiMStnmm29I8848vcVH2V3f3P7cpAEyKo5M32ShkjIIQIyFk2bObLy6suWJ4Z8QN1x/bVp5xWWNPJ5x9MM9r08aIiP8PL1pvQrGJH53kkpFVB4/vfC8DjzK8TIsVFIGu8AYC5c2XP1JU/iEGJUf4Wdyj27/o6P+foRa4Wdyw6qQqj/VTBYqKYcAxFhYcUmz1Z9okNy5+6Wj/n7cvDesurbRxzSOJmvcjeqZ8DO5YVXIVcs+0/6DHDNTXdqm/wQgOq+N3UDDGiRXatYdKkLkqz9+7Yj/WTynGsaHmyxA2mVYzVSWtimDAETntVHmf3TIJ8TPXbKksccyria7eVu6GW6yAJkG1R/Lr1VofmaCAETnNV3mjwbJyW48ixfM88l7iMEywyS7vyzdDDdZgEwHx0IwPcOWtimLXWB0Whtl/mHVnxWqP0NFj8XRdtlYupmayQLkdGZiRaB/voM3/aiiNv06MPuHQwlAdFrTzc/DKhdpip+84+vsfPHATSc+cb7x5v60d9++9z597tz9crHbcKe6dLPt+V2DX6Ma98rBilxcv7iOb8T1LfiT/HSWYGOb/MRW+YlruvfN/e+FoolrGp7ZsWskj/dI2ljCs/zFoQQgOm3Fxc1WWyarXKRpTN2N/2aicXuyBu4jBaWwbcfOwa+v7Hlt0uW4cTTVpZv3rts5k/93sawRz9mRbup9DEqxA7Hq7J9DX4uTfY2Y3/TKnj2Df4/rF4G9zupJG1PdpzqRnHIIQHRWF4++qLt59+hB6crB/0ZA+qVP9qdfZhTP6aETpI90U7/mqxt6tfTRRFU0lqYmlqfidRlnkdWpjU0EUz3WhnJogqazmn6THDa1uI2pu33bstv0cxoBsm99H230oA3ri5uOnApWVcN+timTAEQntfEmOdnU4tTS1u0+9Sy08Zz27aYXDeRNn5k2bFfkdDXd15em8LNNmSyB0UltHH0xbNtx01u3+7Zlt40b37DndNzE6+FD/+gTY/13aKOC1bfXAfVQAaKTmt4hMmzoXBtbty3d5IllDzNfuqWNCtawn23KJQDROdFr0/Sb5LCwYctunjZufBu3fqPR78dwqoB0iQBE5zS99T1NIWw0PXU3+i76tGW3nb4PTa9d08bP9rC5XpRLDxCd0/ROoWFho43t+L/bs+WvpQsvaPT71d2420VxJMuiBfPT4nPnpTmzZpmufQRm/zAZAYhO6eLRF21s3e7T7qUIkF17TsdV7KRbueyywZJs06F8HJn9w2QEIDql6V6bYXNibN3Ot7ThHX19nP2TDgbJzTffIPhMkdk/DCMA0SlN99oMe4PUtJknAuTyi5u9hn286cUOuntvWt2BRzI+zP5hGE3QdEYbvTbDKgW2budpY55T36o/sSws/Eyf3V8MIwDRGW0cfTHZ6de2budreklz2HM6jmLZi+mJU+/N/mEYAYhOaKPXZthOK1u387Qxz6lvu+dip1fT17APbt38QOmXgCkQgOiENsLGsINGbd3O08rwyJ4dHtvGsRHjLk7/71sVkNHQBE0nNP1GP2w8vq3b+ZoOkH1b9mijgXycxfLn1betF36YMgGI1rWxVDKsQdLW7TyxdNP82Wn9OToktdRAPm4O9HztHMz7seWd6RKAaF0bSyWTjce3dTtf0xW9wfDIng29a2NZ+PIbv5L2jsHk5J27XzbhmWwCEK1reqlk2Hj8Nj559232TxvznPp0Q4yq6KJz5jX6PWMJURWFkmiCplWt9NoMqRS0sXW7b7N/ujbPadx08UBg6BsBiFZ17ZytdvqR+jX7p+mlmz7O/mn65yI5NZ0CWQKjNW3M/hm2TbqNT959m/3T9NJNH2f/NF0VrfvU9BgielLDVUB9QUyXAERrWpn9M6TM3/Qn777N/lnacO9PMvunFnWfmv7w7esaD3Enf/KzjX4/xp8lMFqzatlnGv3WMftnsl6bNj559232T9PPaR9n/zTdQD5sWXi6+lDBogwCEK2IEnnzc2K6dfBp32b/tPOc9m/2T+MN5DVX0PpQwaIMlsBoRSvHJExys2xr63afNP2cmv1Tj6igRdWmLk3/HEUTvO37VCEA8Z44dbqvo/ej12bY7J+mP3nHtR636z33ihVHXXJq+sYXz9frf/Bwo98z16avP5JW33XPEb9KGw3k4Y5V1zb+Pev06PY/GuvHT3ssgTHQ93OHunjy+7iZrN8mlj2aDpDjaLKBl23sQOyDPg0RpVkCEAN9PndoKrN/2vjkPW4mW0JsY/fXuBnWsN3G7J9xN+xQY5iMAMRAGz05TRnW5OnmPdywfpum5zmNo8kCZBsN5H2g+kMOAYhWph83adibZNx8mNxkZ23V2UDbV8MCZJ8/gIyS6dXkEIDo9ZtvNJ0OK5FHAGRyk4XI2afOcvWGGHZYa9MN5H1g9g+5BCAaP429KbE99tbNDw79bnvf3N+Xv/JIDDus9dUf7xnrv18TJpv3pIG8GrN/yCUAFa6N09ibEM2R/2TlDVP6hNi3w0jrNuz6xEGkEZI4smGHtepBmz6zf6iDAFS4pT3c/RW7bS784pop7w6Jm1MslXFkUzmu47M3rhv0ufBBk41giOVXDeTTZ/YPdZhx/AVL3nUly/XWf/v22P/dI/DEMtbzu18afCqcbLlmMnEzin6oxQvm97opfDpigGSEm6mIWVIxTylGKsw/8wzLOgdNNjwyXm/jPoiwDZNdU5gqAQgAKI4lMACgOAIQAFAcAQgAKI4ABAAURwACAIojAAEAxRGAAIDiCEAAQHEEIACgOAIQAFAcAQgAKI4ABAAURwACAIojAAEAxRGAAIDiCEAAQHEEIACgOAIQAFAcAQgAKI4ABAAURwACAIojAAEAxRGAAIDiCEAAQHEEIACgOAIQAFAcAQgAKI4ABAAURwACAIojAAEAxRGAAIDiCEAAQHEEIACgOAIQAFAcAQgAKI4ABAAURwACAIojAAEAxRGAAIDiCEAAQHEEIACgOAIQAFAcAQgAKI4ABAAURwACAIojAAEAxRGAAIDiCEAAQHEEIACgOAIQAFAcAQgAKI4ABAAURwACAIojAAEAxRGAAIDiCEAAQHEEIACgOAIQAFAcAQgAKI4ABAAURwACAIojAAEAxRGAAIDiHOcpB0bp7Dkz0i+fPCOdNWfG4LvEv8c/h3vhz95Je/en9NO/iH9/N73wyjvpp/s9NcBoCEBArT750WPSeWfPSGf/3WPSx876YNA5mo+ddewHfufPfxJB6N303Avvpuf++zuDfweow4zjL1jiHQXIsuzjx6RPfPSY9IlfGe2qegSib//JO2nrd4QhII8ABFQSy1jXfOqYtOzjx6YP/63mr+EPXnk33futtwdhCGC6BCBgWiL4fGnZsemKf9yNPRRRFbpzqyAETI8ABEzJL5yQ0le+cFxngs/hIgitu//t9Ad/IggBwwlAwFDX/NqxafWydpa6puuPf/Bu+pdf+1n60eve2oCjE4CAo4rlrv/wxeOmtZurC978i5Q2bH073fv7b3tygSMSgIAjiu3sEX7GoepzNN/+3juDapB5QsDhTIIGPiCanO/9V+MdfkJsy3/yjuMHwxgBDiUAAe8TVZ8IQH3xd35pRnroN4Ug4P0EIGAgdnlt/tfd3eWVIypZ377j+MHARoDkKAxgwn3/+vixa3aerjv/Rbzl/czMIEAFCEhjudOrqphlZDkMEICgcBF++rjsdTSxHKYnCBCAoGDRE1NS+JkQISiCX/Q9AWUSgKBQUQE50BNTprPmHBjyCJRJAIICReXDzf/AnKA45gMojwAEBYpzvc7SAzMQ1yKO/ADKIgBBYWLp6+pPqXpMmOgHAsoiAEFhvnKVm/3hYgRAnH0GlMNPPBQkdn2VMu9nutZ9QVUMSiIAQUH6dMZX3eLMMEdlQDn8tEMh4uYeN3mOTkCEcghAUIhrND4PpQoE5fCTDgWInV+2vU/Nso8LilACAQgKYNjf1EWTuLlA0H8CEBTAFu/p+YTrBb3npxx6LsJPDPtj6pYVeEAslMZPOfScasb0Rb+UZTDoN++M0HPnne1GXoXrBv0mAEGPRRXD7J9qzjvb2yP0mZ9w6LGzbX2vTAUI+k0Agh4z+6c6lTPoNwEIeuzsv+smnsMyGPSXn27osRNPEIBynHjC+D52YHICEPRYTDWmOkuI0F8CEABQHAEIACiOAAQ99Qv6V7Kd/w+8RUJf+emGnjp7jh9vgKPxDgk99dP973pqAY5CAIKeeuEVASjXj153DaGvBCCAoxCAoL8EIACgOAIQ9Nif/0QFI4frB/11nOcWRmvxgnlp/twz0okzZ6adu19KO198Kb3649cauep//pM41NMTXNWPXh/Pxw0MJwDBiKxadllatewz6bRZJ3/gG3xz+3PpSxvvHnkQeuHP3kkfO+tYT3FFKkDQXwIQ1CwqPptvXnPE4DPh0wvPS4sWzEsXrlwzqAqNip1g1b35F5qgoc/0AEFNZp96Snr49nXpqU3rJw0/E06ceUJ6etP6wfLYqLzwZ27gVQmP0G8CENQglru+f//dg8rOdEQI2nD9tSN7CuImHpUMpu/Z//6OqwY9JgBBhqjefP937k53rLp2EGaqWHTOvEH1aFSefcGNvIpv/4nrBn0mAEFFa69anr53/2+neWeenn0JFy+YP7KnwY18+qJqZgkM+k0TNExTVH0233xDLcFnwuxZo6sAPfeCG/l0/YHQCL2nAgTTUGfVpymxk+mPfyAETYeqGfSfChBMQfToRNUn+nVGYZRb4cPW77ydPnaWH/epiNk/KkDQfypAMMSlC88f7PAaVfjZu29/2rZj10ifhq3fecdusCmKawX0nwAEk4gt6g/dfkvlHV5TsXHrI+mNfftG/jT8599/e+TfY9xFSLz3W64TlEAAgiOIJa/Y3r7yistGenl2vfhy2rT1kUaegrixqwJNLpa+frq/y48QqIsABIeZWPIadaPztud3pQu/uKaR6k+IG7sq0NFFOLxzq+sDpRCA4BCxy2vUS14/3PN6uuarGxoNPxNUgY4uwqGzv6ActoVASumkmTMH/T7LL75opJfj1vseHCx5NR18JkQVaMPWt9O6zzsh/lCx80vvD5RFAKJ4EX6e/tr6kS55xXLX1bfdkV798WutX+57f//t9MmPHpM+dtaM1h9LV6y7/229P1AYS2AULaY6735oy8jCT2xxn1ju6kL4mXDLfT+zFHbQt7/3jrk/UCABiGJFs/PTm9aPrN/nm9ufS3MvX5G2PP5k5y5xnHO1QcPvYOnrX37tZx14JEDTLIFRpBWXLEn33rR6JH/1qPrEctdj25/t9KWNpbDzzp6RPvEr5X4Ouvrf/czSFxRKBYjixE6vUYWfiapP18PPhKh+/KDQU8+/9B9/5sR3KNiM4y9Y4h2AYsR5XqPY6RVVn1vve2Aw1Xnc/MIJKX337g+lD/+tgl4H33o73XK/JUAomQoQxRhV+IlpzheuXDOW4Scd3Bp/+Zf/upim6K//4TvCDyAAUYZRhZ8HnnhqsMNr1Ke5j1osBZUQgiL8aHoGkiUwSjCK8BNLXqs33tPJHV45zp4zIz30m8f3cjlM+AEOpQJEr40i/MRRFrHk1bfwkw5Wgn71urd61xi97nfeFn6A9xGA6K1RhJ+Y6PyRz1839ktekxn0BN3y14OKybiLJb1r/v3PBlv+AQ517LGnnbHOFaFvRhF+ot/n8hu/kv7yrbd6/3r5q79O6dt/8k766V+k9A//3jHpbxzfgQc1TX/8g3fTlf/2Z+lP/6dVfuCD9ADRO6MIP3GcRR+XvKbil0+ekf7DF48bm7PDouoTJ7vfadI1MAkBiF6pO/yMy1TnJiz7+DHpK184rtMN0lH1iV6fH73ubQ2YnABEb9R9vEWEn2h27nO/z3TF0MRrPnVs+me/dmynglAEnw2/93Z67gWHmgJTIwDRC3WHn9jp9dkb1wk/RzERhKIq9Hd+qb2lMcEHqEoAYuzNn3tG+t79v13bX2Mw2fmLa9Ib+/Z5cUxBhKBPfPSYxg5VjRPco0H73m+9Y6kLqEwAYqxF+Hl60/p04swTavlrCD/VRVXokx89Jp139jGDX+tcIou5RFHl2fqddxxgCtRCAGJsnTRzZnr6a+vTvDNPr+WvIPzUK3aPxWTps+bMSOf/gwPVoWE7yaK68+c/SYPKTvzz3AvvWt4CRkIAYmxF+Fl0zrxaHr7wA1AWk6AZSxuuv1b4AaAyAYixEzu+Vl5xWS0PW/gBKJMAxFiJpucNq66t5SELPwDlEoAYG9H0/PDt62rZ8RVDDmPOj/ADUCYBiLERx1ycNuvk7Ic7MeH51R+/5skHKJQAxFhYteyy9OmF59XyUB1vAYAAROdF388dNfX9xKnuwg8AAhCdNtH3U4db73swbXn8SU84AAIQ3bb26itr6ft54Imn0q33PeDZBmBAAKKzLl14fi3zfmK7++q77vFEA/AeAYhOiqWv2PWVy3Z3AI5EAKKTIvzUMe/n8hvX2e4OwAcIQHROLH3VseU9mp6f2bHLEwzABwhAdEpdS1/f3P6cpmcAjkoAolNi11fu0lf0/Vx92x2eWACOSgCiMxYvmFfLrq/LNT0DMIQARGdsuP667Iei7weAqRCA6IQ462vemadnPZSY96PvB4CpEIBoXTQ+r71qefbD0PcDwFQJQLRuw/XXZjc+x9KXQ04BmCoBiFbFSe/LL74o6yFY+gJgugQgWhXVn1yWvgCYLgGI1sS290XnzMv69pa+AKhCAKI1udvef7jn9bRp6yOeQACm7TiXjDasuGRJ9rb3L911d28GHkYvVPwze9Ypg4rWzhdfcohrj0S1M57fE2fOTNt27Ew7d79sWCe0TACiFV/O3Pa+7fld6bHtz479kxcHv955/XXptFknf+D34u+4+q57LPGNsRjvEDOu3r/L8crB/z7wxFOD51cQgnbMOP6CJe+69jQpqj/33rQ66zvOvWLF2FdI4tDXqeyAu+arG9KWx59s5DFRj5ht9fTX1g+tcsa5dReuXCPkQgv0ANG43OrPpq8/MvbhJyoDU93+H2ExllAYHw/91i1TWuKNytDTm9YPAhPQLAGIRkX150jLPVMVn5hv3fzgWD9ps089Ja296spp/ZnNN68Z2eOhXvEan87uxghBdYyDAKZHAKJRudWfjVsfGfueiaULz5/2n4nQeGmFP0fzqjy/UQ1UBYJmCUA0Jrf6E9ve+zDx+dJF1YJM7CKi+z698LyKz2/erkhgegQgGrPikrwjL36z8OMuTvpw3nlpdNuJKkDQKAGIRuROfY7qT+k7od54c38HHgWjstd2eGiUAEQjVi37TNa3Kb36A0C9BCBGLnY9Ve2LSKo/AIyAAMTIxSTcHKo/ANRNAGKkYmvviouXVP4Wqj8AjIIAxEjFlu/3n4M0PRu3fsMTBEDtBCBGKmf5K6Y+b3n8KU8QALUTgBiZGNw3lfOQjmbLE086KRuAkRCAGJncwYdx7AUAjIIAxMjkND9/c/tzY3/iOwDdJQAxEnFwp+ZnALpKAGIkllY88DMd3Pr+zI5dnhgARkYAonYx+2f5xdX7f1R/ABg1AYjaXZpR/QmPbn/WkwLASAlA1G7pwuoBSPMzAE0QgKhVLH/lHHyq+gNAEwQgapWz/HVg8rNzvwAYPQGIWi1eMK/yl3tM9QeAhghA1OrSjP6fR7cJQAA0QwCiNlH9qTr8MJa/VIAAaIoARG1y+n+EHwCaJABRm8UL5lf+Upa/AGiSAEQtYvv7vDNPr/ylVIAAaJIARC1ylr9i+CEANEkAohY529+f2bHTkwBAowQgapHV/2P5C4CGCUBkm33qKem0WSdX+jI/3PO6s78AaJwARLb5Z55R+UtY/gKgDQIQ2Rafm9P/s8sTAEDjBCCyzZ+rAgTAeBGAyLbonGoVIP0/ALRFACKL6g8A40gAIktOANq5+yUXH4BWCEBkmT+3+vEXGqABaIsARBYVIADGkQBElqoN0NueV/0BoD0CEJXFBOiqVH8AaJMARGVzZlUPQLa/A9AmAYjK9P8AMK4EICrLWwJ72YUHoDUCEJVVrQDt3bc/vbFvnwsPQGsEICo7aebMSn9054uWvwBolwBEZfPOrDYEUQM0AG0TgKikavUnvCIAAdAyAYhKco7AeHWPAARAuwQgGvfqj/e46AC0SgCikkUL5le+cK+oAAHQMgGIxmmCBqBtAhAAUBwBiEoWn+sUeADGlwAEABRHAAIAiiMAUUnlYzCcAg9ABxznSaCKqsdgvPHmftcbGCo+ZK245KK0eMH8dOKHTxj857GD9NFtz6bHtj/rApJNAAKgU1ZcsiRtWHVtOnHmCe9/WOektPzii9KuF19OV992h4oyWSyBAdAZa69anu69afUHw88hogL99Kb1af7cMzxxVCYAAdAJixfMS2uvunJKDyUC0sO3r8s6mJmyCUAAdMKG66+b1sM4bdbJaeWyyzx5VCIA0ai9+/a54MAHxHJWlc0VSxed72JSiQBEozQtAkcye9Ypla5L1R2pIAAB0DoNzTRNAAIAiiMA0ajZp85ywQFonQBEo6qu8wNAnQQgAKA4AhAAUBwBCAAojgAEABRHAKKSOI25ipM+fPQDDoFyLT53XqW/+7bnd3nVUIkARCVvVDzSwrAzALpAAAIAiiMAAdC6ObMMSaVZAhCVPPOn1dbdF51TbZ0f6LfTZp3c6HsRCEAAQHEEIBo3+1THYQA/t3hB9crw3oobMkAAopJtO3ZWvnBznAcG1GTn7pdcSioRgGjciTNnuujAe4zHoA0CEJXs3F1tEGLyZleZIZL0Vc6Homd2aIKmGgGISqoOQkxu5JUJjvTVOV7btEAAorKqx2G4kdNXOc28JTux4oeiqu9BkAQgclQ+DuNMAQj4uarzwXIq0SAAUVnV3RcnzrQEBhyQMxbDEERyCEBU9uqPX6v8Zy0VTJ+jArrPDsfpyxmLYQYQOQQgKsuZv1FyH1DVT61VjwqgOTmv65ydleNs0YL5GdfMDCCqE4Co7JU91StApkFXc5IKQ2+V2s8yJ+O9oNTQSD0EICrLWQIruQL0akZwnD/39FofC/VafG61pd29+/YX+0xUfS+Ia6YJmhwCEFm2Pe9U+Ol69cd7Kv9ZIwS6rWqf1s4Xy13KmXdmtVBf8jWjHgIQWfQBTZ+lw36K5cmqfVo51dRxlrMZQv8PuQQgsjgSY/osHfZTzvLkK4UGIE3jtEkAIkvOck7JW+EtHfaP3UzTt9g1o0UCEFlyDiLMefMbd2Yo9U/VBuhUcD9LXgVIACKPAES2qtWM6JcodVt3TnC8dNH5tT4W6lG1Ohe7mUrsAYp+tqo9U1Xfc+BQAhDZcj6JLSq0mpFzzUqunHXVpQurh9JtGWF4nOW8jh2BQR0EILLlvBktLbSaEQGo6uyX2DZsN1i35LyOny+2/8cOMNolAJEtp3+h5GpGzif/pRkVB+qXUwF6bPuzRT4jqma0TQAiW/Qv/HDP65W+TPQAlFrNeGbHzsp/dsUlS2p9LFQXN/ITZ55Q6c9HFbDEakY0P1e9ZrtefNkEaGohAFGLnJt5qdWMRzM++ccymJlA3ZCz/FVu/0/15a+c9xo4lABELWyHn76onMWn2apWLbtsrP6+fRS7GJdffFHlv1lOCB5nOTsZNUBTFwGIWjy2rfob+acXnlfsk5DzaTaWXpwO366VmSE05+dmXMVrNmegp/4f6iIAUYtYk8+pZuQ0RI6zLY8/VfnRRw9F7g2YPDlVuG9uf67IXpac6o/+H+okAFGbrD6ggrfD5wTHz2mGbk00oldt5E0FL3/l9Pw9WmDFjNERgKhNTjm/1ApQGlSBnqz8Z2MXnV6gdnz5quWVv2/s/sp53sdZzpJ3qSMDGA0BiNpEI3TV4X7xSdoyWDVrr1quF6hhETqrHuOQCr6R54xvKHVkAKMjAFGrnDf2UpfBogGsBUYAABL6SURBVKfhgSf0Ao2LCJtrM6o/4Tfve6CkS/aenOUv1R/qJgBRq6xDPi2DVbb2qisdj9GQtVdfmdX7Ewd5lnj4aQTHnOUv/T/UTQCiVjl9QHFTKXXCcQTH3BOuN998Q22PhyOL4ZMrr8irtt26uczqT87ur1j+UgGibgIQtYrlnNjeW1XJZ1zl3hhjtkrJVbQm5IbMODImp0o6zlZcUn1gpPDDKAhA1C5ne2+UyMs9G2xX1pb4dPAGbSlsNKLvJ44gyVFq70+8JnOGH1r+YhQEIGqXO912xcXlzrZZfdfdWX8+lhEthdUvzq6KPqscUf0pdet7zqgGy1+MigBE7XJ3NZU83K+OXqD4pJ27S4mfi+bdh25fl31Frr5tfbFXdenCCyr/WeGHURGAGImcknXMVym5l6WOJtmoVugHqsdDv3VL1q6vdHDnV7m9P0uyZiaVWjVj9AQgRiI+tVUdiphUgbIqaBNiKSx2LZF3DXN6VyasvuueYp+FnObnkpvGGT0BiJHZ8kT1T24lN0OngzfMnACZDvYDPXz7OlOiK4q+leUXV795T9j09UeKnWCc2/z8u6o/jJAAxMjkHvGQc9bSuIs+qltr2DEUSw9Pf229EDRNsWxzx6prs79OVDBu3fxgw4++O3J/hnM+RMEwAhAjk3vSefSwlHzj3rj1keyG6BBbt4WgqYvwc+9Nq2v5Wl+66+5BmC1RvN5yKmilTsymOQIQIxU38aqccRU7h+7IXgpLQtCU1Rl+oo+r5B1MuT+7uRVkGEYAYqRiB0fODTz6MEq+accn4DqWwpIQNFSd4SeWvkpufI7XWM7sn5JnJtEcAYiRy1nHjypQzhlCfRBVtJzjRQ4VIWj3Q1vsDjtM7PaqK/yEz964rtilr3Sw+pMzOkDzM00QgBi5nGWwVHgz9IRYCss9JmNC3Jie3rS+2INnDxWVitgpV8durwk3bLyn2F1fqYbqT9iU+Z4BUyEAMXKxjJNTwYidTKXfrKOaUFc/UDoYgqLiseH6/J1O4yqqYN//nbsHIxfqEn0/uYF/3OVWf+Iallw9ozkCEI3YuPUbWd9GFejArroIQXVaecVlgxBQ2sylqFB87/7fzppQfLio0JXc95Nqqv6UHiBpzrHHnnZG/iE3MMSre15Li8+dn2bPqnajPfCJckbaVvhU2P/vhz8aVIGW/OpHavuap/yfvziYvP1Xb72VvvvC/6jt63ZRBL2Hf2td+mdLP1Xro4um3X/0G9cXX7lYc+U/zXptxtb39Q/+Xq2PCY5GBYjG5G5rLX1H2IT4hFzHURmHioAZg/9il1hfG6TjgNjv3393LUdbHCoCaelNz6mm6k8d5+DBVAlANCa2tcYn5arMBfq5WAqrOwSlgyfJx9JQ7IrqS9iMgZovPvTA4IDY3ENNDxfh58KVa4puep6Q2/tT8oGxtMMSGI16Y9/+rFPKz5l7Rtr6X/+wtmbgcRZD9uacOmskFZv4mr/x67+W/uaHPpR27X45/eVbb43dlVq8YF7a/P/cMFiWqTv4JOHnfWJp8aHbb8n6GtfcdsdgqRyaIgDRqLhZfO6ST1S+IcUN+Rc/PLPoCbuHGmUIimsdISKC0Kz/6xff6z/qutgxGLvbYsmras/ZMMLP+915/XVZr8Go/tx6X7lnptEOAYjG5VaB4o02mqF9WjxglCEoHQxCv3r2/z3o7zhn7pmDalCEoS6JCsSqZZ9J9928ZjDTZ1TBJwk/HxAhOffgWNUf2jDj+AuWvOvK07ToycjZghyfGC/84hrP2yGib6fOgX6TiRAQwevRbc+2Vo2L0LN4wfy04pKLam9sPhrh54NijEJMGK/KzzJtEYBoRR3nLl3z1Q3OCzpMnedZTVWEgqjIPbNj56CJdVThIJqyFy2YlxafO28QfHJuulXEnJ+4UZe+2+tQURXMrf5ctHKN5mdaIQDRmthynfPJPW68cy9f4YZ0mFiSeOj2dSNp/J2q+FQfQSimgMevsew51WAUQWf+3NPTiYNfzxg0vke1p+nAc6iYZB4777zWfi6epzhXLnfnl+oPbRGAaE3cqJ/atD7r28dW8LqnI/dBBIdYEmszNEwmqimHhok5s2bVOpW5TtGcW9eJ/H0SZ6jlHiOi+kObBCBalVsFSt5Ejyo+ocduqKb6gvomKoyX37jOa+sIfHihDwQgWhVLG7u/viXrIcRwxY98/jrLE0cRO+6iGtTmkti4seR1dBGso/E5p2IX4fIjX7husEQKbTEJmlbFG+Cmr+cdfhhvxGuvvtITeRSxSyt6pXJO5C9F3Jhv2HiPoy0mET9rucuVcZyL8EPbVIBoXR3NlMlS2JSoBh2dqs9wdSx9qdjSFSpAtC7eCFdvvCf7YWy+eY3DUoeYqAaZuvtzcUOO8KzqM7n42YqfsVxfuutu15lOEIDohJjnE1tic0RZPpp+mVzcfGJX09wrVozkQNVxEctdMUvqzMuXqxxOQVQOc5e+4mfcMTZ0haMw6Iydu19Ov/Hrn8p6OLH9O75O145q6KKJac4xxHDO35410uMjuiT+3usf3JquvOX29N0X/t8i/s65YsDmmiuXZX2VuO6/tvpmBxnTGQIQnfHa//rf6aQPzxycO5XjEx/7FSfGT0OcwbTl8afSY9ufS//H3/jQyM4Ua1ssdUXl65rbNqQnv/v9sTzhvg3xevgvX7lpcCZcjgidqj90iSZoOqWOLbbp4KC9aLRk+mI0wYqLlwyOOehDs3Qsu2z8vUfcfCuIn8eY1ZU7UNPPI10kANE5dew0CbG9fvVd+c3VJYtdY5+7ZEn2xN+mRbXndx9/Mm154knbrTPUdcDur3zhnztAls4RgOikaGZeecVl2Q/Ngan1iErApYvOT0sXnj84kLSLlaEIPY9u/6PBcp6bbb66DtZ1lAhdJQDRSXUthUUf0IUr17gh1iyqdIsWzB+czJ57lElVEXjieX10+7ODk+hVeuoTfT9Pb1qfHXQtfdFlAhCdVddSmMFroxfPVdw05x88uX3+mWfUWiWK5/CVPXvSM3964JT5nS++JPCMSF2DSZOlLzpOAKLT6loKi0bYC7+YP8SN6YlglA5WFE48bEjlnFNPGYSlCDWHi5vm3n370it7XhN0GhaV19ym52TpizEgANF5db0hO30aJldX07MPHIwDk6DpvAgtdcz0iTf2aOwEPmjtVctrCT/xs3r5v/mKK0znGYRI58WAxPgntmTniq/x6sHmWeCA+GCwYVU9x8jEhO3o0YKuUwFiLMRW9rrOrYo3+r5OO4bpij6tOra7p4OztwycZFwIQIyNGGoY22pzxe6W2OIrBFG6+Bl46PZ6FgHiZ9PgUcaJAMTYiG3sdfUDCUGUrq5ZP2li3pamZ8aMAMRYid6dunZyxRv/w7evG8w9gZLUGX5CDBs1Z4txIwAxdqLHIGaM1CEmTcdhj0IQpag7/MRxMzYVMI4EIMZSDFirqyk6ZgwJQZSg7vATP4PO2mNcCUCMrbqaopMQRAHqDj8x7NBgUcaZAMTYip6DaLysoyk6HRKC4ngG6JO6w0988DDskHEnADHWBiFoZb0h6Pv33213GL1Rd/iJn7XP3rhO0zNjTwBi7EUD5uU31jfQ3BZ5+mIU4Sc+cDiglj4QgOiFZ3bsGuxGqctECJo4zRzGTRxvUWf4SQfP5bPji75wFhi9EW/Mcc5XHWeGhb/5oQ8NbiLODmPcxOs2jreI13Bd4gPG1v/6h14L9IYARK8cCCozaq3cHAhUM9K2Hbu8WOi8zTffkNZedWWtDzPCj+3u9I0ARO9EUJlz6qxae3giUMXXjK/9l2+95UVD58QIh//ylZvSFf9kca0PTfihr/QA0UvRq1DXoMQJyy++yKwgOmnQ7Py19enTC8+r9eHFxHXhh74SgOitUYSg2Ca/+6EtdojRGbFEG83O8dqsU/zsxMR16CtLYPRanBtW93JYNJb+xq9/arAl+Lsv/A8vIFqz9qrl6T+uWVVrs3PY9PVH0r9Yv9ETS68JQPTeKEJQWPKrH0nnzD0zPfnd7+sLolGxDPv7d96WVlx8Ue3fNnp+1j/4e55Qek8AogijCkF/f/Yvp3964ccHc4he+1//24uJkYuG/P/2n+5Kf/+0X679W2l4piQCEMWIEFTnnKAJMWgulsRslWfUYsnr3ptvqH3JKwk/FEgAoih1D0s8VHwyX3zu/EE1qK6zySAd3OX1rTu/mpbVvMU9HTze4ot3bBJ+KI4ARHEmQtDiBfNr/yQ9e9Yp6XOXLEl/9dZbGqSpxapllw2GG8Zrq24TZ3tFHxuUZsbxFyx517NOieo+KPJw257fNdiK7+BIqph96imD4LPonNGcR/fDPa8PTnV3zAulMgeIYsUb/0e+cF3a9eLLI7kEceP6/v13Dz7Bw3REr8/ur28ZWfiJ1/xHPn+d8EPRVIAoXmwpfui3bhnZzSYdvOE4SZthoo9sw/XX1T7U8FAx4HD1XfekN/bt83xQNAEIDorlhuUjmKtyqBgwd+vmB918eJ8I4Ruuv3bkr7842sJ0ZzhAAIJDrLhkSbr3ptUjvSTReBo3oY1bH3HpGSx3xTLpqHrR0sHXXFQgYxQEcIAABIeJ5uiHb1+XTpt18kgvTTShXn3b+sG2ecoToxjuvP66kb/OLL/CkQlAcARN9AVNiN1it25+QBAqRPT5rL16eSOvLf0+cHQCEEwilifWXnVlI5fItvl+azL4hBs23mOZFSYhAMEQcePafPOakS9VTIhP7TGVV0WoH5oOPpa8YGoEIJiCWBKLXWKfXnheY5fL0th4azr4JLsMYVoEIJiG2CW2YdW1I92xc7gIQlsef8pZTWMiXiMrLrmo0eBjlxdMnwAE0zTqIwqOJnaNbdz6jUEY8gm/W6JCuHLZZYNz4JpaKp3wze3PDcKP1wRMjwAEFcXslmiSbrIaNEGfUDfEMldUfEY9wPBIVH0gjwAEGdqqBk2YqAo9uv1Zu8caEtWeWOJatewzjVd7Jqj6QD4BCGoQQ+0iCLVRDZoQN8UIQo9te9aNsWYRei5ddH5auvD8RhvhD2d4JtRHAIKaxE1y7dVXppVXtH/6uzCUbyL0xDJXG0tch4tzvDZtfcTzCTURgKBmcZRGHGzZ1rLY4SIMPbNjp2WyKYglzcUL5rde6TmUAZkwGgIQjEg0x375quWt9YkcSSyhPLr9j9Izf7orbduxSzXhYCPzgUrP/DTvzNM78IgOsNwFoyUAwYg1cdp3VTE1OKpDpQSiWNaaP/f0tGjB/LT43HmdqdIdKnZ3rd54j7lPMGICEDRgYk5MU+eKVRVVhzhC4fndL6VtO3amnbtfHutQFNWdWJKc+KdLFZ7DRfCJs7v0+UAzBCBoUPSYxLJYF5pqpypC0St79gyqRHv37RsEpFf2vNaZnpSJqs7sU2el2bNOGVR25sya1amlx8kIPtAOAQhaMI5B6EhiCS1u2hGGXjkYiCIg7T14I39j3/7Kh3LGNZoz65T3/n8sW4U5p54y+L0IPl2u6Awj+EC7BCBoUdzIoz9oxcVLOtkjRP0EH+gGAQg6YKJHqKvN0uRzlht0iwAEHRPb5yMIjfPyDj/nNH/oJgEIOqrNgzbJE8tccUhpLHVV7YECRksAgo7rwuGbTE00hUfocQQJdJ8ABGMkZtnE8lgcvqpXqBsmpmvHMpdqD4wPAQjGVISgpYvOt0TWgoklrke3PTv4FRg/AhCMuUNPLVcZGh2hB/pFAIKeiRAU05CXLrxAz1CmibPSoqfHoaTQLwIQ9FgMWly68MBJ54sWzFMdGiKqPHEo7KPbnx0En64c9wHUTwCCgkQTdSyVCUQHTBz+OjgRf8cuTcxQEAEIChYVoghDcZhohKNF58zr7cWI6s7OF18aHOoaQSf+XYUHyiUAAe8TQShOVY9fz4l/P/WUsZtKHdOX9765Pz2/+6W0bcfOTp1eD3SDAARMycTp7LNPnTUISBOnsoemK0cRcNLBk+ffeHN/enUQcPaknbtfNoAQmBIBCKhV9BgdatGC+dP+8nv37ftAP45dWECdBCAAoDjHeMoBgNIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKA4AhAAUBwBCAAojgAEABRHAAIAiiMAAQDFEYAAgOIIQABAcQQgAKAsKaX/H4WbI+3wRDcmAAAAAElFTkSuQmCC"
 };
 
-const ALL_APPS = [{"key": "accumulo", "name": "Accumulo"}, {"key": "admin", "name": "Admin"}, {"key": "airflow", "name": "Airflow"}, {"key": "consul", "name": "Consul"}, {"key": "documentation", "name": "Documentation"}, {"key": "grafana", "name": "Grafana"}, {"key": "kibana", "name": "Kibana"}, {"key": "nagios", "name": "Nagios"}, {"key": "nifi", "name": "NiFi"}, {"key": "nifi_registry", "name": "NiFi Registry"}, {"key": "prometheus", "name": "Prometheus"}, {"key": "rda_deployer", "name": "RDA Deployer"}, {"key": "spark", "name": "Spark"}, {"key": "unity", "name": "Unity"}];
+const ALL_APPS = [{"key": "unity", "name": "Unity", "description": "Content-Processor", "function": "Data Processing / Orchestration"}, {"key": "accumulo", "name": "Accumulo", "description": "Key-value data store for cell-level security", "function": "Storage, Discovery, Configuration"}, {"key": "admin", "name": "Admin Portal", "description": "administrators manage permissions, configurations, and system operations", "function": "Platform Management"}, {"key": "airflow", "name": "Airflow", "description": "Workflow orchestrator to build, schedule, and monitor data pipelines with Python-DAG flows", "function": "Data Processing / Orchestration"}, {"key": "consul", "name": "Consul", "description": "Service mesh and service-discovery tool that provides health checks, configuration management, and secure service-to-service communication", "function": "Storage, Discovery, Configuration"}, {"key": "documentation", "name": "Documentation Portal", "description": "Organized and searchable technical documentation, guides, and reference material.", "function": "Platform Management"}, {"key": "grafana", "name": "Grafana", "description": "Visualization and monitoring platform that turns metrics and logs into interactive dashboards for observability in the system", "function": "Monitoring, Logging, Observability, Analysis"}, {"key": "kibana", "name": "Kibana", "description": "Data exploration and visualization tool for Elasticsearch", "function": "Monitoring, Logging, Observability, Analysis"}, {"key": "nagios", "name": "Nagios", "description": "Infrastructure monitoring system that tracks hosts, services, and network resources", "function": "Monitoring, Logging, Observability, Analysis"}, {"key": "nifi", "name": "NiFi", "description": "Dataflow automation tool that moves and transforms data", "function": "Data Processing / Orchestration"}, {"key": "nifi_registry", "name": "NiFi Registry", "description": "Stores versions of NiFi flow configurations, enabling change tracking and deployment consistency", "function": "Monitoring, Logging, Observability, Analysis"}, {"key": "prometheus", "name": "Prometheus", "description": "Metrics-based monitroing and alerting system", "function": "Monitoring, Logging, Observability, Analysis"}, {"key": "rda_deployer", "name": "RDA Deployer", "description": "Custom Application Deployer", "function": "Platform Management"}, {"key": "spark", "name": "Spark History Server", "description": "Displays logs and metrics of Spark Applications", "function": "Data Processing / Orchestration"}];
+
+const CAT_ORDER = ["Data Processing / Orchestration", "Monitoring, Logging, Observability, Analysis", "Storage, Discovery, Configuration", "Platform Management"];
+const CAT_ICONS = {"Data Processing / Orchestration": "\u2699", "Monitoring, Logging, Observability, Analysis": "\ud83d\udcca", "Storage, Discovery, Configuration": "\ud83d\uddc4", "Platform Management": "\ud83d\udee0"};
 
 let recentApps = [];
 let pinnedApps = [];
 
-// ===== PINNED (sidebar vertical list) =====
+// ===== TOOLTIP =====
+const tooltip = document.getElementById('tooltip');
+const ttName = document.getElementById('tt-name');
+const ttDesc = document.getElementById('tt-desc');
+let tooltipTimer = null;
+
+function addTooltip(el, name, desc) {
+  el.addEventListener('mouseenter', () => {
+    tooltipTimer = setTimeout(() => {
+      ttName.textContent = name;
+      ttDesc.textContent = desc;
+      tooltip.style.display = 'block';
+    }, 650);
+  });
+  el.addEventListener('mouseleave', () => {
+    clearTimeout(tooltipTimer);
+    tooltip.style.display = 'none';
+  });
+  el.addEventListener('mousemove', (e) => {
+    const tw = tooltip.offsetWidth;
+    let left = e.clientX - tw / 2;
+    if (left < 8) left = 8;
+    if (left + tw > window.innerWidth - 8) left = window.innerWidth - tw - 8;
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = (e.clientY - tooltip.offsetHeight - 12) + 'px';
+  });
+}
+
+// ===== PINNED =====
 function renderPinned() {
   const list = document.getElementById('pinned-list');
   list.innerHTML = '';
@@ -866,10 +642,9 @@ function renderPinned() {
       <div class="remove-pin" onclick="removePinned(event,${i})">✕</div>
     `;
     row.addEventListener('click', (e) => { if (!e.target.classList.contains('remove-pin')) launchApp(app); });
-    addTooltip(row, app.name);
+    addTooltip(row, app.name, app.description);
     list.appendChild(row);
   });
-  // Add pin button
   const addRow = document.createElement('div');
   addRow.className = 'add-pin-row';
   addRow.innerHTML = '<span style="font-size:15px;line-height:1">+</span><span>Add App...</span>';
@@ -883,7 +658,7 @@ function removePinned(e, idx) {
   renderPinned();
 }
 
-// ===== RECENT APPS (max 5) =====
+// ===== RECENT =====
 function renderRecent() {
   const row = document.getElementById('recent-row');
   row.innerHTML = '';
@@ -896,7 +671,7 @@ function renderRecent() {
     tile.className = 'recent-tile';
     tile.innerHTML = `<img src="${APP_IMAGES[app.key]}" alt="${app.name}"><span class="tile-name">${app.name}</span>`;
     tile.onclick = () => launchApp(app);
-    addTooltip(tile, app.name);
+    addTooltip(tile, app.name, app.description);
     row.appendChild(tile);
   });
 }
@@ -906,16 +681,32 @@ function launchApp(app) {
   renderRecent();
 }
 
-// ===== ALL APPS =====
+// ===== ALL APPS (by category) =====
 function renderAllApps() {
-  const grid = document.getElementById('allapps-grid');
-  grid.innerHTML = '';
-  ALL_APPS.forEach(app => {
-    const card = document.createElement('div');
-    card.className = 'app-card';
-    card.innerHTML = `<img src="${APP_IMAGES[app.key]}" alt="${app.name}"><div class="app-card-name">${app.name}</div>`;
-    card.onclick = () => { launchApp(app); showScreen('dashboard'); };
-    grid.appendChild(card);
+  const container = document.getElementById('allapps-cats');
+  container.innerHTML = '';
+  CAT_ORDER.forEach(cat => {
+    const apps = ALL_APPS.filter(a => a.function === cat);
+    if (apps.length === 0) return;
+    const sec = document.createElement('div');
+    sec.className = 'cat-section';
+    sec.innerHTML = `
+      <div class="cat-header">
+        <span class="cat-icon">${CAT_ICONS[cat] || '●'}</span>
+        <span class="cat-title">${cat}</span>
+      </div>
+      <div class="cat-grid" id="cat-${cat.replace(/[^a-z]/gi,'_')}"></div>
+    `;
+    container.appendChild(sec);
+    const grid = sec.querySelector('.cat-grid');
+    apps.forEach(app => {
+      const card = document.createElement('div');
+      card.className = 'app-card';
+      card.innerHTML = `<img src="${APP_IMAGES[app.key]}" alt="${app.name}"><div class="app-card-name">${app.name}</div>`;
+      card.onclick = () => { launchApp(app); showScreen('dashboard'); };
+      addTooltip(card, app.name, app.description);
+      grid.appendChild(card);
+    });
   });
 }
 
@@ -923,11 +714,8 @@ function renderAllApps() {
 function showScreen(name) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen-' + name).classList.add('active');
-  // Dashboard button stays active always; All Apps button never gets active class
-  const dashBtn = document.getElementById('btn-dashboard');
-  const allBtn = document.getElementById('btn-allapps');
-  dashBtn.classList.add('active');
-  allBtn.classList.remove('active');
+  document.getElementById('btn-dashboard').classList.add('active');
+  document.getElementById('btn-allapps').classList.remove('active');
   if (name === 'allapps') renderAllApps();
 }
 
@@ -949,9 +737,7 @@ function openAddModal() {
   }
   document.getElementById('modal-overlay').classList.add('show');
 }
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('show');
-}
+function closeModal() { document.getElementById('modal-overlay').classList.remove('show'); }
 
 // ===== SEARCH =====
 const searchInput = document.getElementById('search-input');
@@ -959,7 +745,7 @@ const searchDropdown = document.getElementById('search-dropdown');
 searchInput.addEventListener('input', () => {
   const q = searchInput.value.trim().toLowerCase();
   if (!q) { searchDropdown.classList.remove('show'); return; }
-  const results = ALL_APPS.filter(a => a.name.toLowerCase().includes(q));
+  const results = ALL_APPS.filter(a => a.name.toLowerCase().includes(q) || a.description.toLowerCase().includes(q));
   searchDropdown.innerHTML = results.length === 0
     ? '<div class="search-no-results">No apps found</div>'
     : results.map(a => `<div class="search-result-item" onclick="handleSearchClick('${a.key}')"><img src="${APP_IMAGES[a.key]}" alt="${a.name}"><span>${a.name}</span></div>`).join('');
@@ -976,26 +762,6 @@ function handleSearchClick(key) {
   searchDropdown.classList.remove('show');
 }
 
-// ===== TOOLTIP =====
-const tooltip = document.getElementById('tooltip');
-let tooltipTimer = null;
-function addTooltip(el, name) {
-  el.addEventListener('mouseenter', () => {
-    tooltipTimer = setTimeout(() => {
-      tooltip.textContent = name;
-      tooltip.style.display = 'block';
-    }, 600);
-  });
-  el.addEventListener('mouseleave', () => {
-    clearTimeout(tooltipTimer);
-    tooltip.style.display = 'none';
-  });
-  el.addEventListener('mousemove', (e) => {
-    tooltip.style.left = (e.clientX - tooltip.offsetWidth/2) + 'px';
-    tooltip.style.top = (e.clientY - 34) + 'px';
-  });
-}
-
 // ===== CLOCK =====
 function updateClock() {
   const now = new Date();
@@ -1010,36 +776,26 @@ function drawSparkline(canvasId, data, color) {
   const canvas = document.getElementById(canvasId);
   if (!canvas) return;
   const dpr = window.devicePixelRatio || 1;
-  const w = canvas.offsetWidth || 200;
-  const h = 44;
-  canvas.width = w * dpr;
-  canvas.height = h * dpr;
+  const w = canvas.offsetWidth || 200, h = 44;
+  canvas.width = w * dpr; canvas.height = h * dpr;
   const ctx = canvas.getContext('2d');
   ctx.scale(dpr, dpr);
-  const max = Math.max(...data), min = Math.min(...data);
-  const range = max - min || 1;
+  const max = Math.max(...data), min = Math.min(...data), range = max - min || 1;
   ctx.clearRect(0,0,w,h);
-  ctx.beginPath();
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 1.5;
-  ctx.shadowColor = color;
-  ctx.shadowBlur = 4;
-  data.forEach((v, i) => {
-    const x = (i/(data.length-1))*w;
-    const y = h - ((v-min)/range)*(h-8) - 4;
-    i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+  ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 1.5;
+  ctx.shadowColor = color; ctx.shadowBlur = 4;
+  data.forEach((v,i) => {
+    const x = (i/(data.length-1))*w, y = h-((v-min)/range)*(h-8)-4;
+    i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
   });
   ctx.stroke();
   ctx.lineTo(w,h); ctx.lineTo(0,h); ctx.closePath();
   const grad = ctx.createLinearGradient(0,0,0,h);
   grad.addColorStop(0, color.replace('rgb','rgba').replace(')',',0.15)'));
-  grad.addColorStop(1, 'transparent');
-  ctx.fillStyle = grad;
-  ctx.shadowBlur = 0;
-  ctx.fill();
+  grad.addColorStop(1,'transparent');
+  ctx.fillStyle = grad; ctx.shadowBlur = 0; ctx.fill();
 }
 
-// ===== HEALTH SIMULATION =====
 const cpuHistory = Array.from({length:20}, () => 55+Math.random()*30);
 const memHistory = Array.from({length:20}, () => 75+Math.random()*15);
 const netHistory = Array.from({length:20}, () => 30+Math.random()*55);
@@ -1050,10 +806,10 @@ function updateHealth() {
   netHistory.push(25+Math.random()*62); netHistory.shift();
   const cpu = Math.round(cpuHistory[cpuHistory.length-1]);
   const mem = Math.round(memHistory[memHistory.length-1]);
-  document.getElementById('cpu-val').textContent = cpu + '%';
-  document.getElementById('cpu-bar').style.width = cpu + '%';
-  document.getElementById('mem-val').textContent = mem + '%';
-  document.getElementById('mem-bar').style.width = mem + '%';
+  document.getElementById('cpu-val').textContent = cpu+'%';
+  document.getElementById('cpu-bar').style.width = cpu+'%';
+  document.getElementById('mem-val').textContent = mem+'%';
+  document.getElementById('mem-bar').style.width = mem+'%';
   drawSparkline('spark-cpu', cpuHistory, '#00e676');
   drawSparkline('spark-mem', memHistory, '#ffd740');
   drawSparkline('spark-net', netHistory, '#1e90ff');
@@ -1061,7 +817,6 @@ function updateHealth() {
 setInterval(updateHealth, 2000);
 setTimeout(updateHealth, 150);
 
-// Init
 renderPinned();
 renderRecent();
 </script>
