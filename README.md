@@ -2,6 +2,7 @@
 Hey guys I added some stuff last minute so be aware and dont forget to mention them in the presentation cus I wont be there
 
 Tooltips display app descriptions
+
 All Apps screen organizes apps by categories
 
 Graphs still display nothing lol
