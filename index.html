@@ -7,20 +7,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-dark: #0a0e1a; /* #0a0e1a controls the background color */
-    --bg-panel: #0f1628; /* #0f1628 contorls the side and serach bar colors and settings menu*/
-    --bg-card: #141c32; /* #141c32 controls colors of object cards aka boxes*/
-    --bg-card-hover: #1a2540; /* #1a2540 controls highlight/hover color*/
-    --accent-blue: #1e90ff; /* #1e90ff graph color*/
-    --accent-teal: #00d4c8; /* #00d4c8 graph color*/
-    --accent-gold: #f5c542; /* #f5c542 graph color*/
-    --text-primary: #e8edf8; /* #e8edf8 base text color*/
-    --text-secondary: #e8edf8; /* #8a9bbf secondary text color */
-    --text-muted: #e8edf8; /* #4a5a80 small text color*/
-    --border: rgba(30,144,255,0.15); /* rgba(30,144,255,0.15) */
-    --border-hover: rgba(30,144,255,0.4); /* rgba(30,144,255,0.4) */
-    --glow: rgba(30,144,255,0.25); /* rgba(30,144,255,0.25) */
-    --shadow: 0 4px 24px rgba(0,0,0,0.5); /* rgba(0,0,0,0.5) */
+    --bg-dark: #0a0e1a; /* background color */
+    --bg-panel: #0f1628; /* side and serach bar colors and settings menu*/
+    --bg-card: #141c32; /* color of object cards aka boxes*/
+    --bg-card-hover: #1a2540; /* highlight/hover color*/
+    --accent-blue: #1e90ff; /* graph color*/
+    --accent-teal: #00d4c8; /* graph color*/
+    --accent-gold: #f5c542; /* graph color*/
+    --text-primary: #e8edf8; /* base text color*/
+    --text-secondary: #e8edf8; /* secondary text color */
+    --text-muted: #e8edf8; /* small text color*/
+    --border: rgba(30,144,255,0.15); /* border colors and scroll bars*/
+    --border-hover: rgba(30,144,255,0.4); /* pop up borders*/
+    --glow: rgba(30,144,255,0.25); /* color of glow*/
+    --shadow: 0 4px 24px rgba(0,0,0,0.5); /* color of shadow */
+    --button-bg: rgba(30,144,255,0.15); /* background of buttons */
+    --button-hover: rgba(30,144,255,0.4); /* hover background of buttons */
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -246,12 +248,12 @@
     letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase;
   }
   .add-notif-btn {
-    background: rgba(30,144,255,0.12); border: 1px solid rgba(30,144,255,0.3);
+    background: var(--button-bg); border: 1px solid rgba(30,144,255,0.3);
     color: var(--accent-blue); border-radius: 5px; padding: 3px 8px;
     font-size: 11px; font-family: 'Exo 2', sans-serif; cursor: pointer;
     transition: all 0.15s;
   }
-  .add-notif-btn:hover { background: rgba(30,144,255,0.22); }
+  .add-notif-btn:hover { background: var(--button-hover); }
   .notif-list { display: flex; flex-direction: column; gap: 6px; overflow-y: auto; flex: 1; }
   .notif-list::-webkit-scrollbar { width: 3px; }
   .notif-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
@@ -675,17 +677,17 @@
 
   /* ===== LIGHT THEME ===== */
   body.theme-light {
-    --bg-dark: #eaf0fb;
-    --bg-panel: #f5f8ff;
-    --bg-card: #fff;
-    --bg-card-hover: #e8edf8;
-    --text-primary: #1a2540;
-    --text-secondary: #4a5a80;
-    --text-muted: #8a9bbf;
-    --border: rgba(30,90,200,0.13);
-    --border-hover: rgba(30,90,200,0.4);
-    --glow: rgba(30,144,255,0.2);
-    --shadow: 0 4px 24px rgba(0,0,0,0.1);
+    --bg-dark: #eaf0fb; /* Background color, old #eaf0fb*/
+    --bg-panel: #fff5f5; /* Side panel color, old #fff5f5*/
+    --bg-card: #fff; /* Object colors, old #fff*/
+    --bg-card-hover: #e8edf8; /* Object hover color, old #e8edf8*/
+    --text-primary: #1a2540; /* Primary text color, old #1a2540*/
+    --text-secondary: #1a2540; /* Secondary text color, old #4a5a80*/
+    --text-muted: #1a2540; /* Muted text color, old #8a9bbf*/
+    --border: rgba(30,90,200,0.13); /* Border color, old #rgba(30,90,200,0.13)*/
+    --border-hover: rgba(30,90,200,0.4); /* Border hover color, old #rgba(30,90,200,0.4)*/
+    --glow: rgba(30,144,255,0.2); /* Glow color, old #rgba(30,144,255,0.2)*/
+    --shadow: 0 4px 24px rgba(0,0,0,0.1); /* Shadow color, old rgba(0,0,0,0.1)*/
   }
   /* ===== HIGH CONTRAST ===== */
   body.theme-hc {
@@ -695,7 +697,7 @@
     --bg-card-hover: #111;
     --text-primary: #fff;
     --text-secondary: #ffff00;
-    --text-muted: #aaa;
+    --text-muted: #fff;
     --border: rgba(255,255,0,0.4);
     --border-hover: rgba(255,255,0,0.9);
     --glow: rgba(255,255,0,0.3);
@@ -703,7 +705,7 @@
     --accent-teal: #00ffea;
   }
 
-  /* ===== CALENDAR DAY VIEW MODAL ===== */
+  /* CALENDAR DAY VIEW MODAL */
   .cal-day-modal-overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,0.7);
     display: none; align-items: center; justify-content: center; z-index: 1500;
@@ -794,7 +796,7 @@
 <!-- DASHBOARD -->
 <div class="screen active" id="screen-dashboard">
   <div class="topbar">
-    <span class="topbar-logo">APG</span>
+    <span class="topbar-logo">TDP</span>
     <span class="topbar-title">PLATFORM</span>
     <div class="topbar-search">
       <input type="text" id="search-input" placeholder="Search apps..." autocomplete="off">
