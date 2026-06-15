@@ -1,12 +1,11 @@
 # startPageUi
-Hey guys I added some stuff last minute so be aware and dont forget to mention them in the presentation cus I wont be there
+Contributers
+Jeremy Gilmour
+Wyatt Lewandoski
+Landon Preece
+Elijah Cob
 
-Tooltips display app descriptions
-
-All Apps screen organizes apps by categories
-
-Graphs still display nothing lol
-
+This project is a concept for a potenial new UI system for the government to use.
 
 
 
