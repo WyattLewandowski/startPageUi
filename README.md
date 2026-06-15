@@ -1,5 +1,5 @@
 # startPageUi
-<h1>Contributers<h1>
+<h1>Contributers</h1>
 Jeremy Gilmour
 Wyatt Lewandoski
 Landon Preece
